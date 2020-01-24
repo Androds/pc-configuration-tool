@@ -10,9 +10,10 @@ namespace PCCOnfiguration.Data.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public string FormFactor { get; set; }
         public sbyte Efficiency { get; set; }
         public short Wattage { get; set; }
         public bool Modular { get; set; }
+
+        public PowerSupplyFormFactor FormFactor { get; set; }
     }
 }

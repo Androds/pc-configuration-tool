@@ -9,5 +9,8 @@ namespace PCCOnfiguration.Data.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public int PowerSupplyId { get; set; }
+        public PowerSupply PowerSupply { get; set; }
     }
 }

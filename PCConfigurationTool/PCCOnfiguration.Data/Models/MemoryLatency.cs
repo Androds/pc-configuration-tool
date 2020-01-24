@@ -9,5 +9,8 @@ namespace PCCOnfiguration.Data.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public int MemoryId { get; set; }
+        public Memory Memory { get; set; }
     }
 }

@@ -10,9 +10,10 @@ namespace PCCOnfiguration.Data.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public string Socket { get; set; }
-        public string FormFactor { get; set; }
         public short RamSlots { get; set; }
         public short MaxRam { get; set; }
+
+        public MotherboardSocketType Socket { get; set; }
+        public MotherboardFormFactor FormFactor { get; set; }
     }
 }

@@ -9,5 +9,8 @@ namespace PCCOnfiguration.Data.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public int MotherboardId { get; set; }
+        public Motherboard Motherboard { get; set; }
     }
 }

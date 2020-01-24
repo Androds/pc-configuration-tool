@@ -10,11 +10,12 @@ namespace PCCOnfiguration.Data.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public short Type { get; set; }
         public string Color { get; set; }
         public string PowerSupply { get; set; }
         public bool Window { get; set; }
         public short ExternalBays { get; set; }
         public short InternalBays { get; set; }
+
+        public CaseType Type { get; set; }
     }
 }

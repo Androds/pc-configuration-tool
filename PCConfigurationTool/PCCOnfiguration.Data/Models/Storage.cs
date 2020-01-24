@@ -11,9 +11,10 @@ namespace PCCOnfiguration.Data.Models
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Capacity { get; set; }
-        public string Type { get; set; }
         public short Cache { get; set; }
-        public double FormFactor { get; set; }
-        public string Interface { get; set; }
+
+        public StorageFormFactor FormFactor { get; set; }
+        public StorageInterface Interface { get; set; }
+        public StorageType Type { get; set; }
     }
 }
