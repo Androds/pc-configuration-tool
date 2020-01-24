@@ -5,3 +5,5 @@
 /PCConfigurationTool/PCConfigurationClient/bin
 /PCConfigurationTool/PCCOnfiguration.Data/obj
 /PCConfigurationTool/PCCOnfiguration.Data/bin
+/.vs
+/PCConfigurationTool/ClassLibrary1/bin/Debug/netcoreapp3.1

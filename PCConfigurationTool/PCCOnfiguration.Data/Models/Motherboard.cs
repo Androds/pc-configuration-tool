@@ -1,9 +1,10 @@
-﻿using PCCOnfiguration.Data.Interfaces.Models;
+﻿using PCConfiguration.Data.Interfaces.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace PCCOnfiguration.Data.Models
+namespace PCConfiguration.Data.Models
 {
     public class Motherboard : IMotherboard
     {
@@ -13,7 +14,9 @@ namespace PCCOnfiguration.Data.Models
         public short RamSlots { get; set; }
         public short MaxRam { get; set; }
 
-        public MotherboardSocketType Socket { get; set; }
-        public MotherboardFormFactor FormFactor { get; set; }
+        public int SocketTypeId { get; set; }
+        public MotherboardSocketType SocketType { get; set; }
+        public int FormFactorId { get; set; }
+        public FormFactor FormFactor { get; set; }
     }
 }

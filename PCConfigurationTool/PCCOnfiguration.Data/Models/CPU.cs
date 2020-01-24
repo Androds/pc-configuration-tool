@@ -1,9 +1,9 @@
-﻿using PCCOnfiguration.Data.Interfaces.Models;
+﻿using PCConfiguration.Data.Interfaces.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PCCOnfiguration.Data.Models
+namespace PCConfiguration.Data.Models
 {
     public class CPU : ICPU
     {

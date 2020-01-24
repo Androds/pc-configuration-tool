@@ -1,9 +1,10 @@
-﻿using PCCOnfiguration.Data.Interfaces.Models;
+﻿using PCConfiguration.Data.Interfaces.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace PCCOnfiguration.Data.Models
+namespace PCConfiguration.Data.Models
 {
     public class Storage : IStorage
     {
@@ -13,8 +14,12 @@ namespace PCCOnfiguration.Data.Models
         public string Capacity { get; set; }
         public short Cache { get; set; }
 
-        public StorageFormFactor FormFactor { get; set; }
-        public StorageInterface Interface { get; set; }
+        
+        public FormFactor FormFactor { get; set; }
+        public int FormFactorId { get; set; }
+        public int InterfaceId { get; set; }
+        public ConnectionInterface Interface { get; set; }
+        public int TypeId { get; set; }
         public StorageType Type { get; set; }
     }
 }

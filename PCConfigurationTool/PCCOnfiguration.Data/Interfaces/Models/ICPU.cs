@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PCCOnfiguration.Data.Interfaces.Models
+namespace PCConfiguration.Data.Interfaces.Models
 {
     public interface ICPU : IPCItem
     {

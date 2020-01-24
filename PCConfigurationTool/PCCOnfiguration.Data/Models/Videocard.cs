@@ -1,9 +1,10 @@
-﻿using PCCOnfiguration.Data.Interfaces.Models;
+﻿using PCConfiguration.Data.Interfaces.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace PCCOnfiguration.Data.Models
+namespace PCConfiguration.Data.Models
 {
     public class VideoCard : IVideoCard
     {
@@ -15,6 +16,8 @@ namespace PCCOnfiguration.Data.Models
         public short CoreSpeed { get; set; }
         public short BoostSpeed { get; set; }
 
-        public VideoCardInterface Interface { get; set; }
+
+        public int InterfaceId { get; set; }
+        public ConnectionInterface Interface { get; set; }
     }
 }

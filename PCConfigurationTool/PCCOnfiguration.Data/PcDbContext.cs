@@ -1,16 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PCCOnfiguration.Data.Models;
+using PCConfiguration.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PCCOnfiguration.Data
+namespace PCConfiguration.Data
 {
     public class PcDbContext : DbContext
     {
+        public PcDbContext()
+        {
+
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=./;Database=PcConfiguration;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=PCConfiguration;Trusted_Connection=True;");
         }
 
         public DbSet<Case> Cases { get; set; }
@@ -24,12 +28,9 @@ namespace PCCOnfiguration.Data
         public DbSet<CaseType> CaseTypes { get; set; }
         public DbSet<MemoryLatency> MemoryLatencies { get; set; }
         public DbSet<MemoryType> MemoryTypes { get; set; }
-        public DbSet<MotherboardFormFactor> MotherboardFormFactors { get; set; }
+        public DbSet<FormFactor> FormFactors { get; set; }
         public DbSet<MotherboardSocketType> MotherboardSocketTypes { get; set; }
-        public DbSet<PowerSupplyFormFactor> PowerSupplyFormFactors { get; set; }
-        public DbSet<StorageFormFactor> StorageFormFactors { get; set; }
-        public DbSet<StorageInterface> StorageInterfaces { get; set; }
+        public DbSet<ConnectionInterface> Interfaces { get; set; }
         public DbSet<StorageType> StorageTypes { get; set; }
-        public DbSet<VideoCardInterface> VideoCardInterfaces { get; set; }
     }
 }

@@ -1,9 +1,10 @@
-﻿using PCCOnfiguration.Data.Interfaces.Models;
+﻿using PCConfiguration.Data.Interfaces.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace PCCOnfiguration.Data.Models
+namespace PCConfiguration.Data.Models
 {
     public class Case : ICase
     {
@@ -16,6 +17,7 @@ namespace PCCOnfiguration.Data.Models
         public short ExternalBays { get; set; }
         public short InternalBays { get; set; }
 
+        public int TypeId { get; set; }
         public CaseType Type { get; set; }
     }
 }
