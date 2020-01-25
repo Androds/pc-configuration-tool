@@ -14,8 +14,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         private DbSet<T> table = null;
         public GenericRepository()
         {
-            this._context = new PcDbContext();
-            table = _context.Set<T>();
+
         }
         public GenericRepository(PcDbContext _context)
         {
@@ -30,6 +29,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         public void Create(T obj)
         {
             table.Add(obj);
+            this._context.SaveChanges();
         }
 
         public void Save()
@@ -40,11 +40,6 @@ namespace PCConfiguration.Data.Implementations.Repositories
         public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await table.ToListAsync();
-        }
-
-        public async Task CreateAsync(T obj)
-        {
-            await table.AddAsync(obj);
         }
     }
 }

@@ -10,6 +10,5 @@ namespace PCConfiguration.Data.Interfaces.Repositories
         IEnumerable<TEntity> GetAll();
         void Create(TEntity obj);
         Task<IEnumerable<TEntity>> GetAllAsync();
-        Task CreateAsync(TEntity obj);
     }
 }

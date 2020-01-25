@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace PCConfiguration.Core.Interfaces
 {
-    public interface IGenericService<TRepository, TEntity> where TRepository: class
+    public interface IGenericService<TRepository, TEntity> where TRepository: IGenericRepository<TEntity>
         where TEntity: class
     {
         Task<IEnumerable<TEntity>> GetAllAsync();
-        Task CreateAsync(TEntity obj);
+        void Create(TEntity obj);
 
         /// <summary>
         /// Gets or sets the repository used to execute the database operations.
         /// </summary>
-        IGenericRepository<TRepository> Repository { get; set; }
+        TRepository Repository { get; set; }
     }
 }

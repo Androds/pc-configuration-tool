@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 namespace PCConfiguration.Core.Services
 {
     public class GenericService<TRepository, TEntity> : IGenericService<TRepository, TEntity>
-        where TRepository: class, IGenericRepository<TRepository>
+        where TRepository: IGenericRepository<TEntity>
         where TEntity : class
     {
         public GenericService(TRepository repository)
         {
             this.Repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
-        public IGenericRepository<TRepository> Repository { get;set; }
+        public TRepository Repository { get;set; }
 
-        public Task CreateAsync(TEntity obj)
+        public void Create(TEntity obj)
         {
-            throw new NotImplementedException();
+           this.Repository.Create(obj);
         }
 
-        public Task<IEnumerable<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await this.Repository.GetAllAsync();
         }
     }
 }

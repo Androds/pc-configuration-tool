@@ -9,7 +9,7 @@ using PCConfiguration.Data;
 namespace PCConfiguration.Data.Migrations
 {
     [DbContext(typeof(PcDbContext))]
-    [Migration("20200125055125_Create DB")]
+    [Migration("20200125141103_Create DB")]
     partial class CreateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
