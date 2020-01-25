@@ -57,14 +57,14 @@ namespace PCConfigurationClient.Controllers
         [HttpGet]
         public void Get()
         {
-            this.CreateCPUs();
-            this.CreateCPUCoolers();
-            this.CreateCases();
-            this.CreateMemories();
-            this.CreateMotherboards();
-            this.CreatePowerSupplies();
-            this.CreateStorages();
-            this.CreateVideoCards();
+            //this.CreateCPUs();
+            //this.CreateCPUCoolers();
+            //this.CreateCases();
+            //this.CreateMemories();
+            //this.CreateMotherboards();
+            //this.CreatePowerSupplies();
+            //this.CreateStorages();
+            //this.CreateVideoCards();
         }
 
         private  void CreateCPUs()

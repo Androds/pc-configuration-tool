@@ -23,18 +23,16 @@ namespace PCConfigurationClient
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
             services.AddSingleton(typeof(PcDbContext));
+            services.AddControllers();
+            services.AddMvc();
             RegisterRepositories(services);
             RegisterServices(services);
         }
-
         private static void RegisterServices(IServiceCollection services)
         {
             services.AddSingleton(typeof(IGenericService<IGenericRepository<Case>, Case>), typeof(GenericService<IGenericRepository<Case>, Case>));
@@ -46,7 +44,6 @@ namespace PCConfigurationClient
             services.AddSingleton(typeof(IGenericService<IGenericRepository<Storage>, Storage>), typeof(GenericService<IGenericRepository<Storage>, Storage>));
             services.AddSingleton(typeof(IGenericService<IGenericRepository<VideoCard>, VideoCard>), typeof(GenericService<IGenericRepository<VideoCard>, VideoCard>));
         }
-
         private static void RegisterRepositories(IServiceCollection services)
         {
             services.AddSingleton(typeof(IGenericRepository<Case>), typeof(GenericRepository<Case>));
@@ -58,7 +55,6 @@ namespace PCConfigurationClient
             services.AddSingleton(typeof(IGenericRepository<VideoCard>), typeof(GenericRepository<VideoCard>));
             services.AddSingleton(typeof(IGenericRepository<Motherboard>), typeof(GenericRepository<Motherboard>));
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -75,8 +71,7 @@ namespace PCConfigurationClient
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
-
+            app.UseRouting();            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
