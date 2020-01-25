@@ -7,19 +7,6 @@ namespace PCConfiguration.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CaseTypes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CaseTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CPUCoolers",
                 columns: table => new
                 {
@@ -94,7 +81,7 @@ namespace PCConfiguration.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MemoryTypes",
+                name: "PCItemType",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -103,59 +90,7 @@ namespace PCConfiguration.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MemoryTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MotherboardSocketTypes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MotherboardSocketTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "StorageTypes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_StorageTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Cases",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false),
-                    Color = table.Column<string>(nullable: true),
-                    PowerSupply = table.Column<string>(nullable: true),
-                    Window = table.Column<bool>(nullable: false),
-                    ExternalBays = table.Column<short>(nullable: false),
-                    InternalBays = table.Column<short>(nullable: false),
-                    TypeId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cases", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Cases_CaseTypes_TypeId",
-                        column: x => x.TypeId,
-                        principalTable: "CaseTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                    table.PrimaryKey("PK_PCItemType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -208,6 +143,32 @@ namespace PCConfiguration.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cases",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false),
+                    Color = table.Column<string>(nullable: true),
+                    PowerSupply = table.Column<string>(nullable: true),
+                    Window = table.Column<bool>(nullable: false),
+                    ExternalBays = table.Column<short>(nullable: false),
+                    InternalBays = table.Column<short>(nullable: false),
+                    TypeId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cases", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Cases_PCItemType_TypeId",
+                        column: x => x.TypeId,
+                        principalTable: "PCItemType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Memories",
                 columns: table => new
                 {
@@ -230,9 +191,9 @@ namespace PCConfiguration.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Memories_MemoryTypes_TypeId",
+                        name: "FK_Memories_PCItemType_TypeId",
                         column: x => x.TypeId,
-                        principalTable: "MemoryTypes",
+                        principalTable: "PCItemType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -260,9 +221,9 @@ namespace PCConfiguration.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Motherboards_MotherboardSocketTypes_SocketTypeId",
+                        name: "FK_Motherboards_PCItemType_SocketTypeId",
                         column: x => x.SocketTypeId,
-                        principalTable: "MotherboardSocketTypes",
+                        principalTable: "PCItemType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -297,9 +258,9 @@ namespace PCConfiguration.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Storages_StorageTypes_TypeId",
+                        name: "FK_Storages_PCItemType_TypeId",
                         column: x => x.TypeId,
-                        principalTable: "StorageTypes",
+                        principalTable: "PCItemType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -392,22 +353,13 @@ namespace PCConfiguration.Data.Migrations
                 name: "VideoCards");
 
             migrationBuilder.DropTable(
-                name: "CaseTypes");
-
-            migrationBuilder.DropTable(
                 name: "MemoryLatencies");
-
-            migrationBuilder.DropTable(
-                name: "MemoryTypes");
-
-            migrationBuilder.DropTable(
-                name: "MotherboardSocketTypes");
 
             migrationBuilder.DropTable(
                 name: "FormFactors");
 
             migrationBuilder.DropTable(
-                name: "StorageTypes");
+                name: "PCItemType");
 
             migrationBuilder.DropTable(
                 name: "Interfaces");

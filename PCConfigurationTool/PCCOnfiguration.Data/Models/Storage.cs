@@ -20,6 +20,6 @@ namespace PCConfiguration.Data.Models
         public int InterfaceId { get; set; }
         public ConnectionInterface Interface { get; set; }
         public int TypeId { get; set; }
-        public StorageType Type { get; set; }
+        public PCItemType Type { get; set; }
     }
 }

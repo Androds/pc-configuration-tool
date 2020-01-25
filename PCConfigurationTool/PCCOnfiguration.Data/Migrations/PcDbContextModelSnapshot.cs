@@ -114,21 +114,6 @@ namespace PCConfiguration.Data.Migrations
                     b.ToTable("Cases");
                 });
 
-            modelBuilder.Entity("PCConfiguration.Data.Models.CaseType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CaseTypes");
-                });
-
             modelBuilder.Entity("PCConfiguration.Data.Models.ConnectionInterface", b =>
                 {
                     b.Property<int>("Id")
@@ -210,21 +195,6 @@ namespace PCConfiguration.Data.Migrations
                     b.ToTable("MemoryLatencies");
                 });
 
-            modelBuilder.Entity("PCConfiguration.Data.Models.MemoryType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MemoryTypes");
-                });
-
             modelBuilder.Entity("PCConfiguration.Data.Models.Motherboard", b =>
                 {
                     b.Property<int>("Id")
@@ -261,7 +231,7 @@ namespace PCConfiguration.Data.Migrations
                     b.ToTable("Motherboards");
                 });
 
-            modelBuilder.Entity("PCConfiguration.Data.Models.MotherboardSocketType", b =>
+            modelBuilder.Entity("PCConfiguration.Data.Models.PCItemType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -273,7 +243,7 @@ namespace PCConfiguration.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MotherboardSocketTypes");
+                    b.ToTable("PCItemType");
                 });
 
             modelBuilder.Entity("PCConfiguration.Data.Models.PowerSupply", b =>
@@ -351,21 +321,6 @@ namespace PCConfiguration.Data.Migrations
                     b.ToTable("Storages");
                 });
 
-            modelBuilder.Entity("PCConfiguration.Data.Models.StorageType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("StorageTypes");
-                });
-
             modelBuilder.Entity("PCConfiguration.Data.Models.VideoCard", b =>
                 {
                     b.Property<int>("Id")
@@ -404,7 +359,7 @@ namespace PCConfiguration.Data.Migrations
 
             modelBuilder.Entity("PCConfiguration.Data.Models.Case", b =>
                 {
-                    b.HasOne("PCConfiguration.Data.Models.CaseType", "Type")
+                    b.HasOne("PCConfiguration.Data.Models.PCItemType", "Type")
                         .WithOne("Case")
                         .HasForeignKey("PCConfiguration.Data.Models.Case", "TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -419,7 +374,7 @@ namespace PCConfiguration.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PCConfiguration.Data.Models.MemoryType", "Type")
+                    b.HasOne("PCConfiguration.Data.Models.PCItemType", "Type")
                         .WithOne("Memory")
                         .HasForeignKey("PCConfiguration.Data.Models.Memory", "TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -434,7 +389,7 @@ namespace PCConfiguration.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PCConfiguration.Data.Models.MotherboardSocketType", "SocketType")
+                    b.HasOne("PCConfiguration.Data.Models.PCItemType", "SocketType")
                         .WithOne("Motherboard")
                         .HasForeignKey("PCConfiguration.Data.Models.Motherboard", "SocketTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -464,7 +419,7 @@ namespace PCConfiguration.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PCConfiguration.Data.Models.StorageType", "Type")
+                    b.HasOne("PCConfiguration.Data.Models.PCItemType", "Type")
                         .WithOne("Storage")
                         .HasForeignKey("PCConfiguration.Data.Models.Storage", "TypeId")
                         .OnDelete(DeleteBehavior.Cascade)

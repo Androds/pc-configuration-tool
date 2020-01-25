@@ -25,12 +25,10 @@ namespace PCConfiguration.Data
         public DbSet<PowerSupply> PowerSupplies { get; set; }
         public DbSet<Storage> Storages { get; set; }
         public DbSet<VideoCard> VideoCards { get; set; }
-        public DbSet<CaseType> CaseTypes { get; set; }
+        public DbSet<PCItemType> CaseTypes { get; set; }
         public DbSet<MemoryLatency> MemoryLatencies { get; set; }
-        public DbSet<MemoryType> MemoryTypes { get; set; }
         public DbSet<FormFactor> FormFactors { get; set; }
-        public DbSet<MotherboardSocketType> MotherboardSocketTypes { get; set; }
         public DbSet<ConnectionInterface> Interfaces { get; set; }
-        public DbSet<StorageType> StorageTypes { get; set; }
+        public DbSet<PCItemType> PCItemTypes { get; set; }
     }
 }

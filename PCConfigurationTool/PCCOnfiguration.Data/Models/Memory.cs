@@ -16,7 +16,7 @@ namespace PCConfiguration.Data.Models
 
         
         public int TypeId { get; set; }
-        public MemoryType Type { get; set; }
+        public PCItemType Type { get; set; }
         public int CASLatencyId { get; set; }        
         public MemoryLatency CASLatency { get; set; }
     }

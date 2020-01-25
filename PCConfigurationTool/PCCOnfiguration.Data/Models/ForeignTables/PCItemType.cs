@@ -5,12 +5,15 @@ using System.Text;
 
 namespace PCConfiguration.Data.Models
 {
-    public class MemoryType : IPCSubItem
+    public class PCItemType : IPCSubItem
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
 
         public Memory Memory { get; set; }
+        public Motherboard Motherboard { get; set; }
+        public Storage Storage { get; set; }
+        public Case Case { get; set; }
     }
 }
