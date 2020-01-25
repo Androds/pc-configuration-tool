@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PCConfiguration.Data.Implementations.Repositories
 {
@@ -36,5 +37,14 @@ namespace PCConfiguration.Data.Implementations.Repositories
             _context.SaveChanges();
         }
 
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await table.ToListAsync();
+        }
+
+        public async Task CreateAsync(T obj)
+        {
+            await table.AddAsync(obj);
+        }
     }
 }
