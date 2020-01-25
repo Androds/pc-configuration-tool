@@ -15,33 +15,23 @@ namespace PCConfigurationClient.Controllers
     public class SeedController : ControllerBase
     {
         #region fields
-        
-        
-        //private IGenericRepository<CPU> cpuRepository;
-        //private IGenericRepository<Case> caseRepository;
-        //private IGenericRepository<CPUCooler> cpuCoolerRepository;
-        //private IGenericRepository<Memory> memoryRepository;
-        //private IGenericRepository<Motherboard> motherboardRepository;
-        //private IGenericRepository<PowerSupply> powerSupplyRepository;
-        //private IGenericRepository<Storage> storageRepository;
-        //private IGenericRepository<VideoCard> videoCardRepository;
-        private IGenericService<IGenericRepository<CPU>, CPU> cpuService;
-        private IGenericService<IGenericRepository<Case>, Case> caseService;
-        private IGenericService<IGenericRepository<CPUCooler>, CPUCooler> cpuCoolerService;
-        private IGenericService<IGenericRepository<Memory>, Memory> memoryService;
-        private IGenericService<IGenericRepository<Motherboard>, Motherboard> motherboardService;
-        private IGenericService<IGenericRepository<PowerSupply>, PowerSupply> powerSupplyService;
-        private IGenericService<IGenericRepository<Storage>, Storage> storageService;
-        private IGenericService<IGenericRepository<VideoCard>, VideoCard> videoCardService;
+        private IService<IRepository<CPU>, CPU> cpuService;
+        private IService<IRepository<Case>, Case> caseService;
+        private IService<IRepository<CPUCooler>, CPUCooler> cpuCoolerService;
+        private IService<IRepository<Memory>, Memory> memoryService;
+        private IService<IRepository<Motherboard>, Motherboard> motherboardService;
+        private IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService;
+        private IService<IRepository<Storage>, Storage> storageService;
+        private IService<IRepository<VideoCard>, VideoCard> videoCardService;
         #endregion
-        public SeedController(IGenericService<IGenericRepository<Case>, Case> caseService,
-            IGenericService<IGenericRepository<CPU>, CPU> cpuService,
-            IGenericService<IGenericRepository<CPUCooler>, CPUCooler> cpuCoolerService,
-            IGenericService<IGenericRepository<Memory>, Memory> memoryService,
-            IGenericService<IGenericRepository<Motherboard>, Motherboard> motherboardService,
-            IGenericService<IGenericRepository<PowerSupply>, PowerSupply> powerSupplyService,
-            IGenericService<IGenericRepository<Storage>, Storage> storageService,
-            IGenericService<IGenericRepository<VideoCard>, VideoCard> videoCardService)
+        public SeedController(IService<IRepository<Case>, Case> caseService,
+            IService<IRepository<CPU>, CPU> cpuService,
+            IService<IRepository<CPUCooler>, CPUCooler> cpuCoolerService,
+            IService<IRepository<Memory>, Memory> memoryService,
+            IService<IRepository<Motherboard>, Motherboard> motherboardService,
+            IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService,
+            IService<IRepository<Storage>, Storage> storageService,
+            IService<IRepository<VideoCard>, VideoCard> videoCardService)
         {
             this.caseService = caseService;
             this.cpuService = cpuService;

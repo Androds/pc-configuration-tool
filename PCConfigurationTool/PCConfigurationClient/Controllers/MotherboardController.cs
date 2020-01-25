@@ -12,9 +12,9 @@ namespace PCConfigurationClient.Controllers
 {
     public class MotherboardController : Controller
     {
-        private readonly IGenericService<IGenericRepository<Motherboard>, Motherboard> motherboardService;
+        private readonly IService<IRepository<Motherboard>, Motherboard> motherboardService;
 
-        public MotherboardController(IGenericService<IGenericRepository<Motherboard>, Motherboard> motherboardService)
+        public MotherboardController(IService<IRepository<Motherboard>, Motherboard> motherboardService)
         {
             this.motherboardService = motherboardService;
         }

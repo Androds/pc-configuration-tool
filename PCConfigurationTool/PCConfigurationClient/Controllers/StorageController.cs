@@ -12,9 +12,9 @@ namespace PCConfigurationClient.Controllers
 {
     public class StorageController : Controller
     {
-        private readonly IGenericService<IGenericRepository<Storage>, Storage> storageService;
+        private readonly IService<IRepository<Storage>, Storage> storageService;
 
-        public StorageController(IGenericService<IGenericRepository<Storage>, Storage> storageService)
+        public StorageController(IService<IRepository<Storage>, Storage> storageService)
         {
             this.storageService = storageService;
         }

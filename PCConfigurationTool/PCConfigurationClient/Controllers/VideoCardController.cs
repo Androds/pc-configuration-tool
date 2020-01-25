@@ -12,9 +12,9 @@ namespace PCConfigurationClient.Controllers
 {
     public class VideoCardController : Controller
     {
-        private readonly IGenericService<IGenericRepository<VideoCard>, VideoCard> videoCardService;
+        private readonly IService<IRepository<VideoCard>, VideoCard> videoCardService;
 
-        public VideoCardController(IGenericService<IGenericRepository<VideoCard>, VideoCard> videoCardService)
+        public VideoCardController(IService<IRepository<VideoCard>, VideoCard> videoCardService)
         {
             this.videoCardService = videoCardService;
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PCConfiguration.Data.Implementations.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T: class
+    public class GenericRepository<T> : IRepository<T> where T: class
     {
         private PcDbContext _context = null;
         private DbSet<T> table = null;

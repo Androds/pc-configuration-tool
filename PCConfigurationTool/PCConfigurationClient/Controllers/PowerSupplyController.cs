@@ -12,9 +12,9 @@ namespace PCConfigurationClient.Controllers
 {
     public class PowerSupplyController : Controller
     {
-        private readonly IGenericService<IGenericRepository<PowerSupply>, PowerSupply> powerSupplyService;
+        private readonly IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService;
 
-        public PowerSupplyController(IGenericService<IGenericRepository<PowerSupply>, PowerSupply> powerSupplyService)
+        public PowerSupplyController(IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService)
         {
             this.powerSupplyService = powerSupplyService;
         }

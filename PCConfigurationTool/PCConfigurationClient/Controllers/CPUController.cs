@@ -14,9 +14,9 @@ namespace PCConfigurationClient.Controllers
 {
     public class CPUController : Controller
     {
-        private readonly IGenericService<IGenericRepository<CPU>, CPU> cpuService;
+        private readonly IService<IRepository<CPU>, CPU> cpuService;
 
-        public CPUController(IGenericService<IGenericRepository<CPU>, CPU> cpuService)
+        public CPUController(IService<IRepository<CPU>, CPU> cpuService)
         {
             this.cpuService = cpuService;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PCConfiguration.Core.Interfaces
 {
-    public interface IGenericService<TRepository, TEntity> where TRepository: IGenericRepository<TEntity>
+    public interface IService<TRepository, TEntity> where TRepository: IRepository<TEntity>
         where TEntity: class
     {
         Task<IEnumerable<TEntity>> GetAllAsync();

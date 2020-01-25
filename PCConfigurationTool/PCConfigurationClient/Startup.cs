@@ -35,25 +35,25 @@ namespace PCConfigurationClient
         }
         private static void RegisterServices(IServiceCollection services)
         {
-            services.AddSingleton(typeof(IGenericService<IGenericRepository<Case>, Case>), typeof(GenericService<IGenericRepository<Case>, Case>));
-            services.AddSingleton(typeof(IGenericService<IGenericRepository<CPU>, CPU>), typeof(GenericService<IGenericRepository<CPU>, CPU>));
-            services.AddSingleton(typeof(IGenericService<IGenericRepository<CPUCooler>, CPUCooler>), typeof(GenericService<IGenericRepository<CPUCooler>, CPUCooler>));
-            services.AddSingleton(typeof(IGenericService<IGenericRepository<Memory>, Memory>), typeof(GenericService<IGenericRepository<Memory>, Memory>));
-            services.AddSingleton(typeof(IGenericService<IGenericRepository<Motherboard>, Motherboard>), typeof(GenericService<IGenericRepository<Motherboard>, Motherboard>));
-            services.AddSingleton(typeof(IGenericService<IGenericRepository<PowerSupply>, PowerSupply>), typeof(GenericService<IGenericRepository<PowerSupply>, PowerSupply>));
-            services.AddSingleton(typeof(IGenericService<IGenericRepository<Storage>, Storage>), typeof(GenericService<IGenericRepository<Storage>, Storage>));
-            services.AddSingleton(typeof(IGenericService<IGenericRepository<VideoCard>, VideoCard>), typeof(GenericService<IGenericRepository<VideoCard>, VideoCard>));
+            services.AddSingleton(typeof(IService<IRepository<Case>, Case>), typeof(CaseService));
+            services.AddSingleton(typeof(IService<IRepository<CPU>, CPU>), typeof(CPUService));
+            services.AddSingleton(typeof(IService<IRepository<CPUCooler>, CPUCooler>), typeof(CPUCoolerService));
+            services.AddSingleton(typeof(IService<IRepository<Memory>, Memory>), typeof(MemoryService));
+            services.AddSingleton(typeof(IService<IRepository<Motherboard>, Motherboard>), typeof(MotherboardService));
+            services.AddSingleton(typeof(IService<IRepository<PowerSupply>, PowerSupply>), typeof(PowerSupplyService));
+            services.AddSingleton(typeof(IService<IRepository<Storage>, Storage>), typeof(StorageService));
+            services.AddSingleton(typeof(IService<IRepository<VideoCard>, VideoCard>), typeof(VideoCardService));
         }
         private static void RegisterRepositories(IServiceCollection services)
         {
-            services.AddSingleton(typeof(IGenericRepository<Case>), typeof(GenericRepository<Case>));
-            services.AddSingleton(typeof(IGenericRepository<PowerSupply>), typeof(GenericRepository<PowerSupply>));
-            services.AddSingleton(typeof(IGenericRepository<CPU>), typeof(GenericRepository<CPU>));
-            services.AddSingleton(typeof(IGenericRepository<CPUCooler>), typeof(GenericRepository<CPUCooler>));
-            services.AddSingleton(typeof(IGenericRepository<Memory>), typeof(GenericRepository<Memory>));
-            services.AddSingleton(typeof(IGenericRepository<Storage>), typeof(GenericRepository<Storage>));
-            services.AddSingleton(typeof(IGenericRepository<VideoCard>), typeof(GenericRepository<VideoCard>));
-            services.AddSingleton(typeof(IGenericRepository<Motherboard>), typeof(GenericRepository<Motherboard>));
+            services.AddSingleton(typeof(IRepository<Case>), typeof(CaseRepository));
+            services.AddSingleton(typeof(IRepository<PowerSupply>), typeof(PowerSupplyRepository));
+            services.AddSingleton(typeof(IRepository<CPU>), typeof(CPURepository));
+            services.AddSingleton(typeof(IRepository<CPUCooler>), typeof(CPUCoolerRepository));
+            services.AddSingleton(typeof(IRepository<Memory>), typeof(MemoryRepository));
+            services.AddSingleton(typeof(IRepository<Storage>), typeof(StorageRepository));
+            services.AddSingleton(typeof(IRepository<VideoCard>), typeof(VideoCardRepository));
+            services.AddSingleton(typeof(IRepository<Motherboard>), typeof(MotherboardRepository));
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

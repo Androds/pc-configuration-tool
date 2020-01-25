@@ -11,9 +11,9 @@ namespace PCConfigurationClient.Controllers
 {
     public class MemoryController : Controller
     {
-        private readonly IGenericService<IGenericRepository<Memory>, Memory> memoryService;
+        private readonly IService<IRepository<Memory>, Memory> memoryService;
 
-        public MemoryController(IGenericService<IGenericRepository<Memory>, Memory> memoryService)
+        public MemoryController(IService<IRepository<Memory>, Memory> memoryService)
         {
             this.memoryService = memoryService;
         }
