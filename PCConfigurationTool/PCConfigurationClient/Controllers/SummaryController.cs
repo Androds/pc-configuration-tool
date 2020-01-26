@@ -18,11 +18,14 @@ namespace PCConfigurationClient.Controllers
             var orderedComponents = new List<SummaryViewModel>();
             foreach (var item in TempData)
             {
-                TempData.TryGetValue(item.Key, out object o);
-                var viewModel = (SummaryViewModel)JsonConvert.DeserializeObject<SummaryViewModel>((string)o);
-                totalSum += viewModel.Price;
-                viewModel.TotalPrice = totalSum;
-                orderedComponents.Add(viewModel);
+                if(TempData.TryGetValue(item.Key, out object o))
+                {
+                    var viewModel = (SummaryViewModel)JsonConvert.DeserializeObject<SummaryViewModel>((string)o);
+                    totalSum += viewModel.Price;
+                    viewModel.TotalPrice = totalSum;
+                    orderedComponents.Add(viewModel);
+                }
+                
             }
 
             return View(orderedComponents);

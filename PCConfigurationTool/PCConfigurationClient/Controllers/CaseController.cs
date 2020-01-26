@@ -30,8 +30,13 @@ namespace PCConfigurationClient.Controllers
 
         // GET: Case/Add/5
         [HttpPost]
-        public async Task<JsonResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(int id, int quantity)
         {
+            if(id <= 0 && quantity <=0)
+            {
+                return BadRequest();
+            }
+
             var compCase = await this.caseService.GetByIdAsync(id);
             var caseName = compCase.Name;
             var casePrice = await this.caseService.CalculatePrice(id, quantity);

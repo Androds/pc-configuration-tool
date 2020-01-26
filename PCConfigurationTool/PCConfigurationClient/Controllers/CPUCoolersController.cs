@@ -29,8 +29,13 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: CPUCoolers/Details/5
-        public async Task<JsonResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(int id, int quantity)
         {
+            if (id <= 0 && quantity <= 0)
+            {
+                return BadRequest();
+            }
+
             var cpuCooler = await this.cpuCoolerService.GetByIdAsync(id);
             var cpuCoolerName = cpuCooler.Name;
             var cpuCoolerPrice = await this.cpuCoolerService.CalculatePrice(id, quantity);

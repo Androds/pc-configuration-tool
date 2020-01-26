@@ -28,8 +28,13 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: Memory/Details/5
-        public async Task<JsonResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(int id, int quantity)
         {
+            if (id <= 0 && quantity <= 0)
+            {
+                return BadRequest();
+            }
+
             var memory = await this.memoryService.GetByIdAsync(id);
             var memoryName = memory.Name;
             var memoryPrice = await this.memoryService.CalculatePrice(id, quantity);

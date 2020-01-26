@@ -8,3 +8,5 @@
 /.vs
 /PCConfigurationTool/ClassLibrary1/bin/Debug/netcoreapp3.1
 *.user
+/PCConfigurationTool/PCConfiguration.Tests/bin/Debug/netcoreapp3.1
+/PCConfigurationTool/PCConfiguration.Tests/obj

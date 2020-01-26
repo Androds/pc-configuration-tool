@@ -30,8 +30,13 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: Storage/Details/5
-        public async Task<JsonResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(int id, int quantity)
         {
+            if (id <= 0 && quantity <= 0)
+            {
+                return BadRequest();
+            }
+
             var storage = await this.storageService.GetByIdAsync(id);
             var storageName = storage.Name;
             var storagePrice = await this.storageService.CalculatePrice(id, quantity);

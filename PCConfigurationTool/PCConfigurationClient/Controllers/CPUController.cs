@@ -31,8 +31,13 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: CPU/Details/5
-        public async Task<JsonResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(int id, int quantity)
         {
+            if (id <= 0 && quantity <= 0)
+            {
+                return BadRequest();
+            }
+
             var cpu = await this.cpuService.GetByIdAsync(id);
             var cpuName = cpu.Name;
             var cpuPrice = await this.cpuService.CalculatePrice(id, quantity);

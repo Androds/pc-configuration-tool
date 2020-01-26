@@ -29,8 +29,13 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: VideoCard/Details/5
-        public async Task<JsonResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(int id, int quantity)
         {
+            if (id <= 0 && quantity <= 0)
+            {
+                return BadRequest();
+            }
+
             var videoCard = await this.videoCardService.GetByIdAsync(id);
             var videoCardName = videoCard.Name;
             var videoCardPrice = await this.videoCardService.CalculatePrice(id, quantity);

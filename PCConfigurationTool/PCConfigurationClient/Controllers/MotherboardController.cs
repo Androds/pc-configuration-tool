@@ -29,8 +29,13 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: Motherboard/Details/5
-        public async Task<JsonResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(int id, int quantity)
         {
+            if (id <= 0 || quantity <= 0)
+            {
+                return BadRequest();
+            }
+
             var motherboard = await this.motherboardService.GetByIdAsync(id);
             var motherboardName = motherboard.Name;
             var motherboardPrice = await this.motherboardService.CalculatePrice(id, quantity);
