@@ -47,14 +47,14 @@ namespace PCConfigurationClient.Controllers
         [HttpGet]
         public void Get()
         {
-            //this.CreateCPUs();
-            //this.CreateCPUCoolers();
-            //this.CreateCases();
-            //this.CreateMemories();
-            //this.CreateMotherboards();
-            //this.CreatePowerSupplies();
-            //this.CreateStorages();
-            //this.CreateVideoCards();
+            this.CreateCPUs();
+            this.CreateCPUCoolers();
+            this.CreateCases();
+            this.CreateMemories();
+            this.CreateMotherboards();
+            this.CreatePowerSupplies();
+            this.CreateStorages();
+            this.CreateVideoCards();
         }
 
         private  void CreateCPUs()
@@ -82,13 +82,13 @@ namespace PCConfigurationClient.Controllers
             var midTower = new PCItemType() { Name = "ATX Mid Tower" };
             this.caseService.Create(new Case() { Name = "NZXT H510", Color = "Black", PowerSupply = "None", ExternalBays = 0, InternalBays = 2, Window = true, Price = 69.98M, Type = midTower });
             midTower = new PCItemType() { Name = "ATX Mid Tower" };
-            this.caseService.Create(new Case() { Name = "Phanteks P300", Color = "Black", PowerSupply = "None", ExternalBays = 0, InternalBays = 2, Window = true, Price = 49.99M, Type = midTower });
+            this.caseService.Create(new Case() { Name = "Phanteks P300", Color = "Black", PowerSupply = "None", ExternalBays = 0, InternalBays = 2, Window = false, Price = 49.99M, Type = midTower });
             var miniTower = new PCItemType() { Name = "ATX Mini Tower" };
-            this.caseService.Create(new Case() { Name = "Cooler Master MasterBox Q300L", Color = "Black", PowerSupply = "None", ExternalBays = 0, InternalBays = 1, Window = true, Price = 47.49M, Type = miniTower });
+            this.caseService.Create(new Case() { Name = "Cooler Master MasterBox Q300L", Color = "Black", PowerSupply = "None", ExternalBays = 0, InternalBays = 1, Window = false, Price = 47.49M, Type = miniTower });
             miniTower = new PCItemType() { Name = "ATX Mini Tower" };
             this.caseService.Create(new Case() { Name = "Deepcool MATREXX 30", Color = "Black", PowerSupply = "None", ExternalBays = 1, InternalBays = 3, Window = true, Price = 39.98M, Type = miniTower });
             var fullTower = new PCItemType() { Name = "ATX Full Tower" };
-            this.caseService.Create(new Case() { Name = "Lian Li PC-O11 Dynamic", Color = "Black", PowerSupply = "None", ExternalBays = 0, InternalBays = 2, Window = true, Price = 139.98M, Type = fullTower });
+            this.caseService.Create(new Case() { Name = "Lian Li PC-O11 Dynamic", Color = "Black", PowerSupply = "None", ExternalBays = 0, InternalBays = 2, Window = false, Price = 139.98M, Type = fullTower });
             fullTower = new PCItemType() { Name = "ATX Full Tower" };
             this.caseService.Create(new Case() { Name = "Corsair 750D", Color = "Black", PowerSupply = "None", ExternalBays = 3, InternalBays = 6, Window = true, Price = 169.98M, Type = fullTower });
         }
