@@ -1,6 +1,7 @@
 ﻿using PCConfiguration.Data.Interfaces.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -13,8 +14,11 @@ namespace PCConfiguration.Data.Models
         public decimal Price { get; set; }
         public int Speed { get; set; }
         public short Modules { get; set; }
-
         
+        [NotMapped]
+        public int Quantity { get; set; }
+
+
         public int TypeId { get; set; }
         public PCItemType Type { get; set; }
         public int CASLatencyId { get; set; }

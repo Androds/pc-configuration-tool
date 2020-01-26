@@ -1,6 +1,7 @@
 ﻿using PCConfiguration.Data.Interfaces.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -15,7 +16,9 @@ namespace PCConfiguration.Data.Models
         public int MemorySize { get; set; }
         public short CoreSpeed { get; set; }
         public short BoostSpeed { get; set; }
-
+        
+        [NotMapped]
+        public int Quantity { get; set; }
 
         public int InterfaceId { get; set; }
         public ConnectionInterface Interface { get; set; }

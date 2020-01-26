@@ -1,6 +1,8 @@
 ﻿using PCConfiguration.Data.Interfaces.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace PCConfiguration.Data.Models
@@ -14,5 +16,8 @@ namespace PCConfiguration.Data.Models
         public string CoreClock { get; set; }
         public string BoostClock { get; set; }
         public bool IntegratedGPU { get; set; }
+        
+        [NotMapped]
+        public int Quantity { get; set; }
     }
 }
