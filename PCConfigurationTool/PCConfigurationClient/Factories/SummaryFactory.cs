@@ -19,8 +19,7 @@ namespace PCConfigurationClient.Factories
             {
                 Name = inputModel.Name,
                 Price = inputModel.Price,
-                Total = $"{inputModel.CurrencySymbol}{inputModel.Price}",
-                OverallTotal="0"
+                TotalPrice = 0M,
             };
 
             return viewModel;

@@ -21,7 +21,7 @@ namespace PCConfigurationClient.Controllers
                 TempData.TryGetValue(item.Key, out object o);
                 var viewModel = (SummaryViewModel)JsonConvert.DeserializeObject<SummaryViewModel>((string)o);
                 totalSum += viewModel.Price;
-                viewModel.OverallTotal = totalSum.ToString();
+                viewModel.TotalPrice = totalSum;
                 orderedComponents.Add(viewModel);
             }
 
