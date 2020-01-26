@@ -15,14 +15,14 @@ namespace PCConfigurationClient.Controllers
     public class SeedController : ControllerBase
     {
         #region fields
-        private IService<IRepository<CPU>, CPU> cpuService;
-        private IService<IRepository<Case>, Case> caseService;
-        private IService<IRepository<CPUCooler>, CPUCooler> cpuCoolerService;
-        private IService<IRepository<Memory>, Memory> memoryService;
-        private IService<IRepository<Motherboard>, Motherboard> motherboardService;
-        private IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService;
-        private IService<IRepository<Storage>, Storage> storageService;
-        private IService<IRepository<VideoCard>, VideoCard> videoCardService;
+        private readonly IService<IRepository<CPU>, CPU> cpuService;
+        private readonly IService<IRepository<Case>, Case> caseService;
+        private readonly IService<IRepository<CPUCooler>, CPUCooler> cpuCoolerService;
+        private readonly IService<IRepository<Memory>, Memory> memoryService;
+        private readonly IService<IRepository<Motherboard>, Motherboard> motherboardService;
+        private readonly IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService;
+        private readonly IService<IRepository<Storage>, Storage> storageService;
+        private readonly IService<IRepository<VideoCard>, VideoCard> videoCardService;
         #endregion
         public SeedController(IService<IRepository<Case>, Case> caseService,
             IService<IRepository<CPU>, CPU> cpuService,
@@ -118,7 +118,6 @@ namespace PCConfigurationClient.Controllers
         private  void CreateMotherboards()
         {
             var am4SocketType = new PCItemType() { Name = "AM4" };
-            var lga1151SockeType = new PCItemType() { Name = "LGA1151" };
             var motherboardFormFactor = new FormFactor() { Name = "ATX" };
             this.motherboardService.Create(new Motherboard() { Name = "MSI B450 TOMAHAWK", MaxRam = 64, RamSlots = 4, Price = 111.99M, FormFactor = motherboardFormFactor, SocketType = am4SocketType });
             motherboardFormFactor = new FormFactor() { Name = "ATX" };
@@ -127,7 +126,7 @@ namespace PCConfigurationClient.Controllers
             am4SocketType = new PCItemType() { Name = "AM4" };
             motherboardFormFactor = new FormFactor() { Name = "ATX" };
             this.motherboardService.Create(new Motherboard() { Name = "Gigabyte GA-A320M-S2H", MaxRam = 32, RamSlots = 4, Price = 54.99M, FormFactor = motherboardFormFactor, SocketType = am4SocketType });
-            lga1151SockeType = new PCItemType() { Name = "LGA1151" };
+            var lga1151SockeType = new PCItemType() { Name = "LGA1151" };
             motherboardFormFactor = new FormFactor() { Name = "ATX" };
             this.motherboardService.Create(new Motherboard() { Name = "Gigabyte Z390 AORUS PRO WIFI", MaxRam = 128, RamSlots = 4, Price = 183.98M, FormFactor = motherboardFormFactor, SocketType = lga1151SockeType });
             lga1151SockeType = new PCItemType() { Name = "LGA1151" };
