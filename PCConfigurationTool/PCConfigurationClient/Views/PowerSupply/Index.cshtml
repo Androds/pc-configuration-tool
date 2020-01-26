@@ -10,11 +10,13 @@
 
         $(".btnAdd").click(function () {
             var row = $(this).closest('tr');
-        var quantity = parseInt(row.find('#item_Quantity').val(), 10);
-            $.post(url, { id: $(this).data('id'), quantity: quantity }, function (result) {
-                $('.toast-body').text(result.name + ' added.');
-                $('.toast').toast('show');
-            });
+            var quantity = parseInt(row.find('#item_Quantity').val(), 10);
+            if (quantity > 0) {
+                $.post(url, { id: $(this).data('id'), quantity: quantity }, function (result) {
+                    $('.toast-body').text(result.name + ' added.');
+                    $('.toast').toast('show');
+                });
+            }
     });
     </script>
 }
@@ -85,10 +87,8 @@
                 @Html.DisplayFor(modelItem => item.Wattage)
             </td>
             <td>
-                <label class="switch">
-                    @Html.DisplayFor(modelItem => item.Modular)
-                    <span class="slider"> </span>
-                </label>
+                @Html.DisplayFor(modelItem => item.Modular)
+                <label class="css-label" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FormFactor.Name)

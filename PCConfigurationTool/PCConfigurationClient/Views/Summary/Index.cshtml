@@ -30,8 +30,11 @@
     <tr>
         <td class="product-name">Overall Total:</td>
         <td class="product-name">
-            @String.Format("{0:c}", Model.LastOrDefault().TotalPrice)
-        </td>        
+            @if (Model != null && Model.LastOrDefault() != null)
+            {
+                @String.Format("{0:c}", Model.LastOrDefault().TotalPrice)
+            }
+        </td>
     </tr>
     </tbody>
 </table>
