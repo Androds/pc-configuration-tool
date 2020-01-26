@@ -17,25 +17,43 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             this._context = _context;
         }
-        public void Create(CPUCooler obj)
+        public void Create(CPUCooler cpuCooler)
         {
-            this._context.CPUCoolers.Add(obj);
-            this._context.SaveChanges();
+            if(cpuCooler != null && this._context != null)
+            {
+                this._context.CPUCoolers.Add(cpuCooler);
+                this._context.SaveChanges();
+            }
         }
 
         public IEnumerable<CPUCooler> GetAll()
         {
-            return this._context.CPUCoolers.ToList();
+            if (_context != null)
+            {
+                return this._context.CPUCoolers.ToList();
+            }
+
+            return new List<CPUCooler>();
         }
 
         public async Task<IEnumerable<CPUCooler>> GetAllAsync()
         {
-            return await this._context.CPUCoolers.ToListAsync();
+            if (this._context != null)
+            {
+                return await this._context.CPUCoolers.ToListAsync();
+            }
+
+            return await Task.FromResult<IEnumerable<CPUCooler>>(null);
         }
 
         public async Task<CPUCooler> GetByIdAsync(int id)
         {
-            return await this._context.CPUCoolers.Where(c => c.Id == id).FirstOrDefaultAsync();
+            if(id > 0 && this._context != null)
+            {
+                return await this._context.CPUCoolers.Where(c => c.Id == id).FirstOrDefaultAsync();
+            }
+
+            return await Task.FromResult<CPUCooler>(null);
         }
     }
 }

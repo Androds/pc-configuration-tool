@@ -17,25 +17,43 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             this._context = _context;
         }
-        public void Create(Case obj)
+        public void Create(Case compCase)
         {
-            this._context.Cases.Add(obj);
-            this._context.SaveChanges();
+            if(compCase != null && this._context != null) {
+                this._context.Cases.Add(compCase);
+                this._context.SaveChanges();
+            }
+            
         }
 
         public IEnumerable<Case> GetAll()
         {
-            return this._context.Cases.Include(c => c.Type).ToList();
+            if (_context != null)
+            {
+                return this._context.Cases.Include(c => c.Type).ToList();
+            }
+
+            return new List<Case>();
         }
 
         public async Task<IEnumerable<Case>> GetAllAsync()
         {
-            return await this._context.Cases.Include(c => c.Type).ToListAsync();
+            if (_context != null)
+            {
+                return await this._context.Cases.Include(c => c.Type).ToListAsync();
+            }
+
+            return await Task.FromResult<IEnumerable<Case>>(null);
         }
 
         public async Task<Case> GetByIdAsync(int id)
         {
-            return await this._context.Cases.Where(c=> c.Id == id).FirstOrDefaultAsync();
+            if (id > 0 && this._context != null)
+            {
+                return await this._context.Cases.Where(c => c.Id == id).FirstOrDefaultAsync();
+            }
+
+            return await Task.FromResult<Case>(null);
         }
     }
 }

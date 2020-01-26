@@ -17,25 +17,43 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             this._context = _context;
         }
-        public void Create(PowerSupply obj)
+        public void Create(PowerSupply powerSupply)
         {
-            this._context.PowerSupplies.Add(obj);
-            this._context.SaveChanges();
+            if (powerSupply != null && this._context != null)
+            {
+                this._context.PowerSupplies.Add(powerSupply);
+                this._context.SaveChanges();
+            }
         }
 
         public IEnumerable<PowerSupply> GetAll()
         {
-            return this._context.PowerSupplies.Include(p => p.FormFactor).ToList();
+            if(this._context != null)
+            {
+                return this._context.PowerSupplies.Include(p => p.FormFactor).ToList();
+            }
+
+            return new List<PowerSupply>();
         }
 
         public async Task<IEnumerable<PowerSupply>> GetAllAsync()
         {
-            return await this._context.PowerSupplies.Include(p => p.FormFactor).ToListAsync();
+            if(this._context != null)
+            {
+                return await this._context.PowerSupplies.Include(p => p.FormFactor).ToListAsync();
+            }
+
+            return await Task.FromResult<IEnumerable<PowerSupply>>(null);
         }
 
         public async Task<PowerSupply> GetByIdAsync(int id)
         {
-            return await this._context.PowerSupplies.Where(c => c.Id == id).FirstOrDefaultAsync();
+            if(id > 0 && this._context != null)
+            {
+                return await this._context.PowerSupplies.Where(c => c.Id == id).FirstOrDefaultAsync();
+            }
+
+            return await Task.FromResult<PowerSupply>(null);
         }
     }
 }

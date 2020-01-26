@@ -17,25 +17,43 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             this._context = _context;
         }
-        public void Create(VideoCard obj)
+        public void Create(VideoCard videoCard)
         {
-            this._context.VideoCards.Add(obj);
-            this._context.SaveChanges();
+            if(videoCard != null && this._context != null)
+            {
+                this._context.VideoCards.Add(videoCard);
+                this._context.SaveChanges();
+            }
         }
 
         public IEnumerable<VideoCard> GetAll()
         {
-            return this._context.VideoCards.Include(vc => vc.Interface).ToList();
+            if(this._context != null)
+            {
+                return this._context.VideoCards.Include(vc => vc.Interface).ToList();
+            }
+
+            return new List<VideoCard>();
         }
 
         public async Task<IEnumerable<VideoCard>> GetAllAsync()
         {
-            return await this._context.VideoCards.Include(vc => vc.Interface).ToListAsync();
+            if(this._context != null)
+            {
+                return await this._context.VideoCards.Include(vc => vc.Interface).ToListAsync();
+            }
+
+            return await Task.FromResult<IEnumerable<VideoCard>>(null);
         }
 
         public async Task<VideoCard> GetByIdAsync(int id)
         {
-            return await this._context.VideoCards.Where(c => c.Id == id).FirstOrDefaultAsync();
+            if(id > 0 && this._context != null)
+            {
+                return await this._context.VideoCards.Where(c => c.Id == id).FirstOrDefaultAsync();
+            }
+
+            return await Task.FromResult<VideoCard>(null);
         }
     }
 }
