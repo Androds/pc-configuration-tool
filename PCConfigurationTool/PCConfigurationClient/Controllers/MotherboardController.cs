@@ -29,7 +29,7 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: Motherboard/Details/5
-        public async Task<ActionResult> Add(int id, int quantity)
+        public async Task<JsonResult> Add(int id, int quantity)
         {
             var motherboard = await this.motherboardService.GetByIdAsync(id);
             var motherboardName = motherboard.Name;
@@ -43,7 +43,7 @@ namespace PCConfigurationClient.Controllers
             TempData[key] = serialized;
             TempData.Keep();
 
-            return View();
+            return new JsonResult(summaryViewModel);
         }
     }
 }

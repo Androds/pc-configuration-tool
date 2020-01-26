@@ -29,7 +29,7 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: VideoCard/Details/5
-        public async Task<ActionResult> Add(int id, int quantity)
+        public async Task<JsonResult> Add(int id, int quantity)
         {
             var videoCard = await this.videoCardService.GetByIdAsync(id);
             var videoCardName = videoCard.Name;
@@ -43,7 +43,7 @@ namespace PCConfigurationClient.Controllers
             TempData[key] = serialized;
             TempData.Keep();
 
-            return View();
+            return new JsonResult(summaryViewModel);
         }
     }
 }

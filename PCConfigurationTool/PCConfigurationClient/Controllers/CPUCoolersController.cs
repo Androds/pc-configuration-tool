@@ -29,7 +29,7 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: CPUCoolers/Details/5
-        public async Task<ActionResult> Add(int id, int quantity)
+        public async Task<JsonResult> Add(int id, int quantity)
         {
             var cpuCooler = await this.cpuCoolerService.GetByIdAsync(id);
             var cpuCoolerName = cpuCooler.Name;
@@ -43,7 +43,7 @@ namespace PCConfigurationClient.Controllers
             TempData[key] = serialized;
             TempData.Keep();
 
-            return View();
+            return new JsonResult(summaryViewModel);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace PCConfigurationClient.Controllers
 
         // GET: Case/Add/5
         [HttpPost]
-        public async Task<ActionResult> Add(int id, int quantity)
+        public async Task<JsonResult> Add(int id, int quantity)
         {
             var compCase = await this.caseService.GetByIdAsync(id);
             var caseName = compCase.Name;
@@ -44,7 +44,7 @@ namespace PCConfigurationClient.Controllers
             TempData[key] = serialized;
             TempData.Keep();
 
-            return View();
+            return new JsonResult(summaryViewModel);
         }
     }
 }

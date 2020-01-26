@@ -11,7 +11,10 @@
         $(".btnAdd").click(function () {
             var row = $(this).closest('tr');
         var quantity = parseInt(row.find('#item_Quantity').val(), 10);
-            $.post(url, { id: $(this).data('id'), quantity: quantity }, function (result) { });
+            $.post(url, { id: $(this).data('id'), quantity: quantity }, function (result) {
+                $('.toast-body').text(result.name + ' added.');
+                $('.toast').toast('show');
+            });
     });
     </script>
 }

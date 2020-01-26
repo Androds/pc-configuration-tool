@@ -31,7 +31,7 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: CPU/Details/5
-        public async Task<IActionResult> Add(int id, int quantity)
+        public async Task<JsonResult> Add(int id, int quantity)
         {
             var cpu = await this.cpuService.GetByIdAsync(id);
             var cpuName = cpu.Name;
@@ -45,7 +45,7 @@ namespace PCConfigurationClient.Controllers
             TempData[key] = serialized;
             TempData.Keep();
 
-            return View();
+            return new JsonResult(summaryViewModel);
         }
     }
 }

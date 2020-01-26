@@ -30,7 +30,7 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: Storage/Details/5
-        public async Task<ActionResult> Add(int id, int quantity)
+        public async Task<JsonResult> Add(int id, int quantity)
         {
             var storage = await this.storageService.GetByIdAsync(id);
             var storageName = storage.Name;
@@ -44,7 +44,7 @@ namespace PCConfigurationClient.Controllers
             TempData[key] = serialized;
             TempData.Keep();
 
-            return View();
+            return new JsonResult(summaryViewModel);
         }
     }
 }

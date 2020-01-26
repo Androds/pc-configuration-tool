@@ -28,7 +28,7 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: Memory/Details/5
-        public async Task<ActionResult> Add(int id, int quantity)
+        public async Task<JsonResult> Add(int id, int quantity)
         {
             var memory = await this.memoryService.GetByIdAsync(id);
             var memoryName = memory.Name;
@@ -42,7 +42,7 @@ namespace PCConfigurationClient.Controllers
             TempData[key] = serialized;
             TempData.Keep();
 
-            return View();
+            return new JsonResult(summaryViewModel);
         }
     }
 }
