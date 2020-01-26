@@ -16,26 +16,44 @@ namespace PCConfiguration.Core.Services
         {
             this.Repository = repository;
         }
-        public void Create(PowerSupply obj)
+        public void Create(PowerSupply powerSupply)
         {
-            this.Repository.Create(obj);
+            if(powerSupply != null && this.Repository != null)
+            {
+                this.Repository.Create(powerSupply);
+            }
         }
 
         public async Task<IEnumerable<PowerSupply>> GetAllAsync()
         {
-            return await this.Repository.GetAllAsync();
+            if(this.Repository != null)
+            {
+                return await this.Repository.GetAllAsync();
+            }
+
+            return await Task.FromResult<IEnumerable<PowerSupply>>(null);
         }
 
         public async Task<decimal> CalculatePrice(int id, int quantity)
         {
-            var entity = await this.GetByIdAsync(id);
-            var totalPrice = entity.Price * quantity;
-            return totalPrice;
+            if(id > 0 && quantity > 0)
+            {
+                var entity = await this.GetByIdAsync(id);
+                var totalPrice = entity.Price * quantity;
+                return totalPrice;
+            }
+
+            return await Task.FromResult<decimal>(0);
         }
 
         public async Task<PowerSupply> GetByIdAsync(int id)
         {
-            return await this.Repository.GetByIdAsync(id);
+            if(id > 0)
+            {
+                return await this.Repository.GetByIdAsync(id);
+            }
+
+            return await Task.FromResult<PowerSupply>(null);
         }
     }
 }

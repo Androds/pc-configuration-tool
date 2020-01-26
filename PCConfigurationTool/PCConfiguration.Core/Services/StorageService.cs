@@ -16,26 +16,44 @@ namespace PCConfiguration.Core.Services
         {
             this.Repository = repository;
         }
-        public void Create(Storage obj)
+        public void Create(Storage storage)
         {
-            this.Repository.Create(obj);
+            if(storage != null)
+            {
+                this.Repository.Create(storage);
+            }
         }
 
         public async Task<IEnumerable<Storage>> GetAllAsync()
         {
-            return await this.Repository.GetAllAsync();
+            if(this.Repository != null)
+            {
+                return await this.Repository.GetAllAsync();
+            }
+
+            return await Task.FromResult<IEnumerable<Storage>>(null);
         }
 
         public async Task<decimal> CalculatePrice(int id, int quantity)
         {
-            var entity = await this.GetByIdAsync(id);
-            var totalPrice = entity.Price * quantity;
-            return totalPrice;
+            if(id > 0 && quantity > 0)
+            {
+                var entity = await this.GetByIdAsync(id);
+                var totalPrice = entity.Price * quantity;
+                return totalPrice;
+            }
+
+            return await Task.FromResult<decimal>(0);
         }
 
         public async Task<Storage> GetByIdAsync(int id)
         {
-            return await this.Repository.GetByIdAsync(id);
+            if(id > 0 && this.Repository != null)
+            {
+                return await this.Repository.GetByIdAsync(id);
+            }
+
+            return await Task.FromResult<Storage>(null);
         }
     }
 }

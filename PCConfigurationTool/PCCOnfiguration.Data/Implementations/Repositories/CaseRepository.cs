@@ -23,7 +23,6 @@ namespace PCConfiguration.Data.Implementations.Repositories
                 this._context.Cases.Add(compCase);
                 this._context.SaveChanges();
             }
-            
         }
 
         public IEnumerable<Case> GetAll()
