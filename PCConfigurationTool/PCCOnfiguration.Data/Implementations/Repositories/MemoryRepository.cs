@@ -32,5 +32,10 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             return await this._context.Memories.Include(m => m.Type).Include(m => m.CASLatency).ToListAsync();
         }
+
+        public async Task<Memory> GetByIdAsync(int id)
+        {
+            return await this._context.Memories.Where(c => c.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

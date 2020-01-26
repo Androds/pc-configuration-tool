@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PCConfiguration.Core.Interfaces;
 using PCConfiguration.Data.Interfaces.Repositories;
 using PCConfiguration.Data.Models;
+using PCConfigurationClient.Factories;
+using PCConfigurationClient.ViewModels;
 
 namespace PCConfigurationClient.Controllers
 {
@@ -26,10 +29,21 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: CPUCoolers/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Add(int id, int quantity)
         {
+            var cpuCooler = await this.cpuCoolerService.GetByIdAsync(id);
+            var cpuCoolerName = cpuCooler.Name;
+            var cpuCoolerPrice = await this.cpuCoolerService.CalculatePrice(id, quantity);
+
+            var inputModel = new PCItemInputModel() { Price = cpuCoolerPrice, Name = cpuCoolerName, CurrencySymbol = "$" };
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var serialized = JsonConvert.SerializeObject(summaryViewModel);
+
+            var key = "CPUCooler" + id;
+            TempData[key] = serialized;
+            TempData.Keep();
+
             return View();
-            //return RedirectToAction(nameof(Index));
         }
     }
 }

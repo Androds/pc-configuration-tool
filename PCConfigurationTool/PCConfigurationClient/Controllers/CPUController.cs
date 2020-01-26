@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using PCConfiguration.Core.Interfaces;
 using PCConfiguration.Data;
 using PCConfiguration.Data.Interfaces.Repositories;
 using PCConfiguration.Data.Models;
+using PCConfigurationClient.Factories;
+using PCConfigurationClient.ViewModels;
 
 namespace PCConfigurationClient.Controllers
 {
@@ -28,19 +31,19 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: CPU/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Add(int id, int quantity)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var cpu = await this.cpuService.GetByIdAsync(id);
+            var cpuName = cpu.Name;
+            var cpuPrice = await this.cpuService.CalculatePrice(id, quantity);
 
-            //var cPU = await _context.CPUs
-            //    .FirstOrDefaultAsync(m => m.Id == id);
-            //if (cPU == null)
-            //{
-            //    return NotFound();
-            //}
+            var inputModel = new PCItemInputModel() { Price = cpuPrice, Name = cpuName, CurrencySymbol = "$" };
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var serialized = JsonConvert.SerializeObject(summaryViewModel);
+
+            var key = "CPU" + id;
+            TempData[key] = serialized;
+            TempData.Keep();
 
             return View();
         }

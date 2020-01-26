@@ -41,5 +41,10 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             return await table.ToListAsync();
         }
+
+        public Task<T> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

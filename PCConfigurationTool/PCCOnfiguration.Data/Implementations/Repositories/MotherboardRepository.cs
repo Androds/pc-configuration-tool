@@ -32,5 +32,10 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             return await this._context.Motherboards.Include(m => m.FormFactor).Include(m => m.SocketType).ToListAsync();
         }
+
+        public async Task<Motherboard> GetByIdAsync(int id)
+        {
+            return await this._context.Motherboards.Where(c => c.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

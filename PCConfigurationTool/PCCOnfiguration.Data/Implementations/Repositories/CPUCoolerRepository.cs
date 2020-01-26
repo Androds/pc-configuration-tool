@@ -32,5 +32,10 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             return await this._context.CPUCoolers.ToListAsync();
         }
+
+        public async Task<CPUCooler> GetByIdAsync(int id)
+        {
+            return await this._context.CPUCoolers.Where(c => c.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

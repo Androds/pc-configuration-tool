@@ -32,5 +32,10 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             return await this._context.VideoCards.Include(vc => vc.Interface).ToListAsync();
         }
+
+        public async Task<VideoCard> GetByIdAsync(int id)
+        {
+            return await this._context.VideoCards.Where(c => c.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

@@ -9,7 +9,9 @@ namespace PCConfiguration.Core.Interfaces
     public interface IService<TRepository, TEntity> where TRepository: IRepository<TEntity>
         where TEntity: class
     {
+        Task<decimal> CalculatePrice(int id, int quantity);
         Task<IEnumerable<TEntity>> GetAllAsync();
+        Task<TEntity> GetByIdAsync(int Id);
         void Create(TEntity obj);
 
         /// <summary>

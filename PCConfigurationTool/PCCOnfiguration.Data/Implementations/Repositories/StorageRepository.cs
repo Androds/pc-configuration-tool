@@ -32,5 +32,10 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             return await this._context.Storages.Include(s => s.FormFactor).Include(s => s.Type).Include(s => s.Interface).ToListAsync();
         }
+
+        public async Task<Storage> GetByIdAsync(int id)
+        {
+            return await this._context.Storages.Where(c => c.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

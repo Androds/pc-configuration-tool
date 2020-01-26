@@ -32,5 +32,10 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             return await this._context.CPUs.ToListAsync();
         }
+
+        public async Task<CPU> GetByIdAsync(int id)
+        {
+            return await this._context.CPUs.Where(c => c.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

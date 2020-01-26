@@ -4,6 +4,18 @@
     ViewData["Title"] = "Index";
 }
 
+@section Scripts {
+    <script type="text/javascript">
+        var url = '@Url.Action("Add", "Case")';
+
+        $(".btnAdd").click(function () {
+            var row = $(this).closest('tr');
+        var quantity = parseInt(row.find('#item_Quantity').val(), 10);
+            $.post(url, { id: $(this).data('id'), quantity: quantity }, function (result) { });
+    });
+    </script>
+}
+
 <h1>Index</h1>
 
 <p>
@@ -14,9 +26,6 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Color)
@@ -39,45 +48,75 @@
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
             <th></th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
+    <tfoot>
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Color)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PowerSupply)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Window)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ExternalBays)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.InternalBays)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @Html.ActionLink("Next", "Index", "CPU", null, null)
             </td>
         </tr>
-}
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PowerSupply)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Window)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExternalBays)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InternalBays)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type.Id)
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => item.Quantity)
+                    @*@Html.TextBoxFor(modelItem => item.Quantity)*@
+                    @Html.ValidationMessageFor(modelItem => item.Quantity)
+                    @*@Html.DisplayFor(modelItem => item.Quantity)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <button type="button" class="btnAdd" data-id="@item.Id">Add</button>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -32,5 +32,10 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             return await this._context.Cases.Include(c => c.Type).ToListAsync();
         }
+
+        public async Task<Case> GetByIdAsync(int id)
+        {
+            return await this._context.Cases.Where(c=> c.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

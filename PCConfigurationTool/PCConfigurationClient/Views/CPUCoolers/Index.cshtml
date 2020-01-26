@@ -4,6 +4,18 @@
     ViewData["Title"] = "Index";
 }
 
+@section Scripts {
+    <script type="text/javascript">
+        var url = '@Url.Action("Add", "CPUCoolers")';
+
+        $(".btnAdd").click(function () {
+            var row = $(this).closest('tr');
+        var quantity = parseInt(row.find('#item_Quantity').val(), 10);
+            $.post(url, { id: $(this).data('id'), quantity: quantity }, function (result) { });
+    });
+    </script>
+}
+
 <h1>Index</h1>
 
 <p>
@@ -33,8 +45,34 @@
             <th></th>
         </tr>
     </thead>
+    <tfoot>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.ActionLink("Next", "Index", "Motherboard", null, null)
+            </td>
+        </tr>
+    </tfoot>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -52,14 +90,13 @@
                 @Html.DisplayFor(modelItem => item.Size)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
+                @Html.EditorFor(modelItem => item.Quantity)
+                @Html.ValidationMessageFor(modelItem => item.Quantity)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <button type="button" class="btnAdd" data-id="@item.Id">Add</button>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

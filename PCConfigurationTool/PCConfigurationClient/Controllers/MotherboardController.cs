@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PCConfiguration.Core.Interfaces;
 using PCConfiguration.Data.Interfaces.Repositories;
 using PCConfiguration.Data.Models;
+using PCConfigurationClient.Factories;
+using PCConfigurationClient.ViewModels;
 
 namespace PCConfigurationClient.Controllers
 {
@@ -26,8 +29,20 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: Motherboard/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Add(int id, int quantity)
         {
+            var motherboard = await this.motherboardService.GetByIdAsync(id);
+            var motherboardName = motherboard.Name;
+            var motherboardPrice = await this.motherboardService.CalculatePrice(id, quantity);
+
+            var inputModel = new PCItemInputModel() { Price = motherboardPrice, Name = motherboardName, CurrencySymbol = "$" };
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var serialized = JsonConvert.SerializeObject(summaryViewModel);
+
+            var key = "Motherboard" + id;
+            TempData[key] = serialized;
+            TempData.Keep();
+
             return View();
         }
     }

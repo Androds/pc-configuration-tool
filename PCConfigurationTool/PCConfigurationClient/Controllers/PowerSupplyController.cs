@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PCConfiguration.Core.Interfaces;
 using PCConfiguration.Data.Interfaces.Repositories;
 using PCConfiguration.Data.Models;
+using PCConfigurationClient.Factories;
+using PCConfigurationClient.ViewModels;
 
 namespace PCConfigurationClient.Controllers
 {
@@ -26,8 +29,20 @@ namespace PCConfigurationClient.Controllers
         }
 
         // GET: PowerSupply/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Add(int id, int quantity)
         {
+            var powerSupply = await this.powerSupplyService.GetByIdAsync(id);
+            var powerSupplyName = powerSupply.Name;
+            var powerSupplyPrice = await this.powerSupplyService.CalculatePrice(id, quantity);
+
+            PCItemInputModel inputModel = new PCItemInputModel() { Price = powerSupplyPrice, Name = powerSupplyName, CurrencySymbol = "$" };
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var serialized = JsonConvert.SerializeObject(summaryViewModel);
+
+            var key = "PowerSupply" + id;
+            TempData[key] = serialized;
+            TempData.Keep();
+
             return View();
         }
     }

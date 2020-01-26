@@ -32,5 +32,10 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             return await this._context.PowerSupplies.Include(p => p.FormFactor).ToListAsync();
         }
+
+        public async Task<PowerSupply> GetByIdAsync(int id)
+        {
+            return await this._context.PowerSupplies.Where(c => c.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

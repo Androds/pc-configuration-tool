@@ -25,5 +25,17 @@ namespace PCConfiguration.Core.Services
         {
             return await this.Repository.GetAllAsync();
         }
+
+        public async Task<decimal> CalculatePrice(int id, int quantity)
+        {
+            var entity = await this.GetByIdAsync(id);
+            var totalPrice = entity.Price * quantity;
+            return totalPrice;
+        }
+
+        public async Task<CPU> GetByIdAsync(int id)
+        {
+            return await this.Repository.GetByIdAsync(id);
+        }
     }
 }

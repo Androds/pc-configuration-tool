@@ -17,6 +17,13 @@ namespace PCConfiguration.Core.Services
         }
         public IRepository<Memory> Repository { get; set; }
 
+        public async Task<decimal> CalculatePrice(int id, int quantity)
+        {
+            var entity = await this.GetByIdAsync(id);
+            var totalPrice = entity.Price * quantity;
+            return totalPrice;
+        }
+
         public void Create(Memory obj)
         {
             this.Repository.Create(obj);
@@ -25,6 +32,11 @@ namespace PCConfiguration.Core.Services
         public async Task<IEnumerable<Memory>> GetAllAsync()
         {
             return await this.Repository.GetAllAsync();
+        }
+
+        public async Task<Memory> GetByIdAsync(int id)
+        {
+            return await this.Repository.GetByIdAsync(id);
         }
     }
 }
