@@ -19,7 +19,7 @@ namespace PCConfiguration.Data.Models
         public short InternalBays { get; set; }
 
         [NotMapped]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
 
         public int TypeId { get; set; }
         public PCItemType Type { get; set; }        

@@ -1,13 +1,8 @@
 ﻿@model IEnumerable<PCConfiguration.Data.Models.CPU>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
 @section Scripts {
     <script type="text/javascript">
         var url = '@Url.Action("Add", "CPU")';
-
         $(".btnAdd").click(function () {
             var row = $(this).closest('tr');
         var quantity = parseInt(row.find('#item_Quantity').val(), 10);
@@ -16,19 +11,15 @@
     </script>
 }
 
-<h1>Index</h1>
+<div class="title">
+    <h1>Choose a CPU</h1>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CoresCount)
@@ -44,6 +35,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
             </th>
             <th></th>
         </tr>
@@ -65,44 +59,47 @@
             <td>
             </td>
             <td>
-            </td>
-            <td>
-            </td>
-            <td>
-                @Html.ActionLink("Next", "Index", "CPUCoolers", null, null)
+                @Html.ActionLink("Next", "Index", "CPUCoolers", null, new { @class = "btnNext" })
             </td>
         </tr>
     </tfoot>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CoresCount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CoreClock)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BoostClock)
-                </td>
-                <td>
+        <tr>
+            <td class="product-name">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoresCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoreClock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoostClock)
+            </td>
+            <td>
+                <label class="switch">
                     @Html.DisplayFor(modelItem => item.IntegratedGPU)
-                </td>
-                <td>
-                    @Html.EditorFor(modelItem => item.Quantity)
-                    @Html.ValidationMessageFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    <button type="button" class="btnAdd" data-id="@item.Id">Add</button>
-                </td>
-            </tr>
+                    <span class="slider"> </span>
+                </label>
+            </td>
+            <td>
+                <div class="number-input">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                    @Html.EditorFor(modelItem => item.Quantity, new { htmlAttributes = new { @class = "quantity" } })
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
+                @Html.ValidationMessageFor(modelItem => item.Quantity)
+            </td>
+            <td class="product-name">
+                @String.Format("{0:c}", item.Price)
+            </td>
+            <td>
+                <button type="button" class="btnAdd" data-id="@item.Id">Add</button>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

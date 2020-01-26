@@ -29,7 +29,13 @@ namespace PCConfigurationClient
         {
             services.AddSingleton(typeof(PcDbContext));
             services.AddControllers();
-            services.AddMvc();
+            services.AddSession(options =>
+            {
+                //options.Cookie.Name = ".AdventureWorks.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                //options.Cookie.IsEssential = true;
+            });
+            services.AddMvc().AddSessionStateTempDataProvider();
             RegisterRepositories(services);
             RegisterServices(services);
         }
@@ -70,7 +76,7 @@ namespace PCConfigurationClient
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();            
             app.UseAuthorization();
 
@@ -78,7 +84,7 @@ namespace PCConfigurationClient
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Case}/{action=Index}/{id?}");
             });
         }
     }

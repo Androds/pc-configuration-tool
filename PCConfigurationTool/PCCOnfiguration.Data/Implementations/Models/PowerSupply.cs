@@ -15,9 +15,9 @@ namespace PCConfiguration.Data.Models
         public sbyte Efficiency { get; set; }
         public short Wattage { get; set; }
         public bool Modular { get; set; }
-        
+
         [NotMapped]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
 
         public int FormFactorId { get; set; }
         public FormFactor FormFactor { get; set; }

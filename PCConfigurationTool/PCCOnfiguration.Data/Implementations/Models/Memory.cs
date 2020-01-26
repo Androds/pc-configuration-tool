@@ -14,9 +14,9 @@ namespace PCConfiguration.Data.Models
         public decimal Price { get; set; }
         public int Speed { get; set; }
         public short Modules { get; set; }
-        
+
         [NotMapped]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
 
 
         public int TypeId { get; set; }

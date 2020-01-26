@@ -14,9 +14,9 @@ namespace PCConfiguration.Data.Models
         public decimal Price { get; set; }
         public short RamSlots { get; set; }
         public short MaxRam { get; set; }
-        
+
         [NotMapped]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
 
         public int SocketTypeId { get; set; }
         public PCItemType SocketType { get; set; }

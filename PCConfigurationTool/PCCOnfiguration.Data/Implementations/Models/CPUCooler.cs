@@ -15,8 +15,8 @@ namespace PCConfiguration.Data.Models
         public int FanRPM { get; set; }
         public int NoiseLevel { get; set; }
         public double Size { get; set; }
-        
+
         [NotMapped]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
     }
 }

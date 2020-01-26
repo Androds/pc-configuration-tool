@@ -1,26 +1,20 @@
 ﻿@model IEnumerable<PCConfiguration.Data.Models.Case>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
 @section Scripts {
     <script type="text/javascript">
         var url = '@Url.Action("Add", "Case")';
-
         $(".btnAdd").click(function () {
             var row = $(this).closest('tr');
         var quantity = parseInt(row.find('#item_Quantity').val(), 10);
             $.post(url, { id: $(this).data('id'), quantity: quantity }, function (result) { });
-    });
+        });
     </script>
 }
 
-<h1>Index</h1>
+<div class="title">
+    <h1>Choose a Case</h1>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -56,26 +50,17 @@
     </thead>
     <tfoot>
         <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-                @Html.ActionLink("Next", "Index", "CPU", null, null)
+                @Html.ActionLink("Next", "Index", "CPU", null, new { @class = "btnNext" })
             </td>
         </tr>
     </tfoot>
@@ -83,7 +68,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="product-name">
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
@@ -93,7 +78,10 @@
                     @Html.DisplayFor(modelItem => item.PowerSupply)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Window)
+                    <label class="switch">
+                        @Html.DisplayFor(modelItem => item.Window)
+                        <span class="slider"> </span>
+                    </label>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ExternalBays)
@@ -102,16 +90,18 @@
                     @Html.DisplayFor(modelItem => item.InternalBays)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Type.Id)
+                    @Html.DisplayFor(modelItem => item.Type.Name)
                 </td>
                 <td>
-                    @Html.EditorFor(modelItem => item.Quantity)
-                    @*@Html.TextBoxFor(modelItem => item.Quantity)*@
+                    <div class="number-input">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                        @Html.EditorFor(modelItem => item.Quantity, new { htmlAttributes = new { @class = "quantity", @Value = "1" } })
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                    </div>
                     @Html.ValidationMessageFor(modelItem => item.Quantity)
-                    @*@Html.DisplayFor(modelItem => item.Quantity)*@
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                <td class="product-name">
+                    @String.Format("{0:c}", item.Price)
                 </td>
                 <td>
                     <button type="button" class="btnAdd" data-id="@item.Id">Add</button>

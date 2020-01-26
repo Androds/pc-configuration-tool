@@ -16,8 +16,8 @@ namespace PCConfiguration.Data.Models
         public string CoreClock { get; set; }
         public string BoostClock { get; set; }
         public bool IntegratedGPU { get; set; }
-        
+
         [NotMapped]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
     }
 }

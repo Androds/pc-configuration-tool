@@ -14,9 +14,9 @@ namespace PCConfiguration.Data.Models
         public decimal Price { get; set; }
         public string Capacity { get; set; }
         public short Cache { get; set; }
-        
+
         [NotMapped]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
 
 
         public FormFactor FormFactor { get; set; }

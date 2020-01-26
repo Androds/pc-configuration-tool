@@ -16,9 +16,9 @@ namespace PCConfiguration.Data.Models
         public int MemorySize { get; set; }
         public short CoreSpeed { get; set; }
         public short BoostSpeed { get; set; }
-        
+
         [NotMapped]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
 
         public int InterfaceId { get; set; }
         public ConnectionInterface Interface { get; set; }
