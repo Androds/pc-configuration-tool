@@ -12,6 +12,16 @@ a {
 color: #0366d6;
 }
 
+.zoom {
+    transition: transform .5s; /* Animation */
+    margin: 0 auto;
+    margin-right: 10px;
+}
+
+.zoom:hover {
+    transform: scale(5);
+}
+
 td > img {
     width: 32px;
     height: 32px;

@@ -40,7 +40,7 @@ namespace PCConfigurationClient.Controllers
             var storageName = storage.Name;
             var storagePrice = await this.storageService.CalculatePrice(inputModel.Id, inputModel.Id);
 
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(storageName, storagePrice);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(storageName, storagePrice, inputModel.ImageSrc);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
             var key = "Storage" + inputModel.Id;

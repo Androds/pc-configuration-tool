@@ -5,5 +5,7 @@ namespace PCConfigurationClient.ViewModels
     {
         public int Id { get; set; }
         public int Quantity { get; set; }
+
+        public string ImageSrc { get; set; }
     }
 }

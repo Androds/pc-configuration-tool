@@ -39,7 +39,7 @@ namespace PCConfigurationClient.Controllers
             var powerSupplyName = powerSupply.Name;
             var powerSupplyPrice = await this.powerSupplyService.CalculatePrice(inputModel.Id, inputModel.Id);
 
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(powerSupplyName, powerSupplyPrice);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(powerSupplyName, powerSupplyPrice, inputModel.ImageSrc);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
             var key = "PowerSupply" + inputModel.Id;

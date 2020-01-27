@@ -39,7 +39,7 @@ namespace PCConfigurationClient.Controllers
             var memoryName = memory.Name;
             var memoryPrice = await this.memoryService.CalculatePrice(inputModel.Id, inputModel.Quantity);
 
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(memoryName, memoryPrice);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(memoryName, memoryPrice, inputModel.ImageSrc);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
             var key = "Memory" + inputModel.Id;

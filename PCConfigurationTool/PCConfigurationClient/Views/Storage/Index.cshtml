@@ -11,8 +11,9 @@
         $(".btnAdd").click(function () {
             var row = $(this).closest('tr');
             var quantity = parseInt(row.find('#item_Quantity').val(), 10);
+            var imageSrc = row.find('.zoom').attr('src');
             if (quantity > 0) {
-                $.post(url, { id: $(this).data('id'), quantity: quantity }, function (result) {
+                $.post(url, { id: $(this).data('id'), quantity: quantity, imageSrc }, function (result) {
                     $('.toast-body').text(result.name + ' added.');
                     $('.toast').toast('show');
                 });
@@ -83,7 +84,7 @@
             {
                 <tr>
                     <td class="product-name">
-                        <img src="@Url.Content(item.ImageSrc)" alt="Image" />
+                        <img src="@Url.Content(item.ImageSrc)" class="zoom" alt="Image" />
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>

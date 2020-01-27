@@ -39,7 +39,7 @@ namespace PCConfigurationClient.Controllers
             var videoCardName = videoCard.Name;
             var videoCardPrice = await this.videoCardService.CalculatePrice(inputModel.Id, inputModel.Quantity);
 
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(videoCardName, videoCardPrice);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(videoCardName, videoCardPrice, inputModel.ImageSrc);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
             var key = "VideoCard" + inputModel.Id;

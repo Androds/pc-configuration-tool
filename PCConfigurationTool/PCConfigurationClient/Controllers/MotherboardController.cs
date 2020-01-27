@@ -39,7 +39,7 @@ namespace PCConfigurationClient.Controllers
             var motherboardName = motherboard.Name;
             var motherboardPrice = await this.motherboardService.CalculatePrice(inputModel.Id, inputModel.Id);
 
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(motherboardName, motherboardPrice);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(motherboardName, motherboardPrice, inputModel.ImageSrc);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
             var key = "Motherboard" + inputModel.Id;

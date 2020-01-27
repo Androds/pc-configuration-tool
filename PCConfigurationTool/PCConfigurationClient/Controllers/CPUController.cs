@@ -39,7 +39,7 @@ namespace PCConfigurationClient.Controllers
             var cpuName = cpu.Name;
             var cpuPrice = await this.cpuService.CalculatePrice(inputModel.Id, inputModel.Quantity);
 
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(cpuName, cpuPrice);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(cpuName, cpuPrice, inputModel.ImageSrc);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
             var key = "CPU" + inputModel.Id;

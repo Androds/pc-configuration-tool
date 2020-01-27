@@ -40,7 +40,7 @@ namespace PCConfigurationClient.Controllers
             var caseName = compCase.Name;
             var casePrice = await this.caseService.CalculatePrice(inputModel.Id, inputModel.Quantity);
             
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(caseName, casePrice);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(caseName, casePrice, inputModel.ImageSrc);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
             var key = "Case" + inputModel.Id;
