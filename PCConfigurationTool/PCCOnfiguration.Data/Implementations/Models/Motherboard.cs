@@ -30,13 +30,13 @@ namespace PCConfiguration.Data.Models
         public int SocketTypeId { get; set; }
 
         /// <inheritdoc/>
-        public PCItemType SocketType { get; set; }
+        public virtual PCItemType SocketType { get; set; }
 
         /// <inheritdoc/>
         public int FormFactorId { get; set; }
 
         /// <inheritdoc/>
-        public FormFactor FormFactor { get; set; }
+        public virtual FormFactor FormFactor { get; set; }
 
         /// <inheritdoc/>
         public string ImageSrc { get; set; }

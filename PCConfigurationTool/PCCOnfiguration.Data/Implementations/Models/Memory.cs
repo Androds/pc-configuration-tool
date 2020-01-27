@@ -29,13 +29,13 @@ namespace PCConfiguration.Data.Models
         public int TypeId { get; set; }
 
         /// <inheritdoc/>
-        public PCItemType Type { get; set; }
+        public virtual PCItemType Type { get; set; }
 
         /// <inheritdoc/>
         public int CASLatencyId { get; set; }
 
         /// <inheritdoc/>
-        public MemoryLatency CASLatency { get; set; }
+        public virtual MemoryLatency CASLatency { get; set; }
 
         /// <inheritdoc/>
         public string ImageSrc { get; set; }

@@ -26,7 +26,7 @@ namespace PCConfiguration.Data.Models
         public int Quantity { get; set; } = 1;
 
         /// <inheritdoc/>
-        public FormFactor FormFactor { get; set; }
+        public virtual FormFactor FormFactor { get; set; }
 
         /// <inheritdoc/>
         public int FormFactorId { get; set; }
@@ -35,13 +35,13 @@ namespace PCConfiguration.Data.Models
         public int InterfaceId { get; set; }
 
         /// <inheritdoc/>
-        public ConnectionInterface Interface { get; set; }
+        public virtual ConnectionInterface Interface { get; set; }
 
         /// <inheritdoc/>
         public int TypeId { get; set; }
 
         /// <inheritdoc/>
-        public PCItemType Type { get; set; }
+        public virtual PCItemType Type { get; set; }
 
         /// <inheritdoc/>
         public string ImageSrc { get; set; }

@@ -32,7 +32,7 @@ namespace PCConfiguration.Data.Models
         public int FormFactorId { get; set; }
 
         /// <inheritdoc/>
-        public FormFactor FormFactor { get; set; }
+        public virtual FormFactor FormFactor { get; set; }
 
         /// <inheritdoc/>
         public string ImageSrc { get; set; }

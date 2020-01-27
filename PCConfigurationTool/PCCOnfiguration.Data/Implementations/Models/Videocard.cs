@@ -35,7 +35,7 @@ namespace PCConfiguration.Data.Models
         public int InterfaceId { get; set; }
 
         /// <inheritdoc/>
-        public ConnectionInterface Interface { get; set; }
+        public virtual ConnectionInterface Interface { get; set; }
 
         /// <inheritdoc/>
         public string ImageSrc { get; set; }

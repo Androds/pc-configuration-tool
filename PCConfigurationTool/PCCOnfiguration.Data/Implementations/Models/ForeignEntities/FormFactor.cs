@@ -11,12 +11,12 @@ namespace PCConfiguration.Data.Models
         public string Name { get; set; }
 
         /// <inheritdoc/>
-        public Storage Storage { get; set; }
+        public virtual Storage Storage { get; set; }
 
         /// <inheritdoc/>
-        public Motherboard Motherboard { get; set; }
+        public virtual Motherboard Motherboard { get; set; }
 
         /// <inheritdoc/>
-        public PowerSupply PowerSupply { get; set; }
+        public virtual PowerSupply PowerSupply { get; set; }
     }
 }

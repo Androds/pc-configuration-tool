@@ -22,7 +22,8 @@ namespace PCConfiguration.Data
         /// typically define extension methods on this object that allow you to configure the context.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=PCConfiguration;Trusted_Connection=True;");
+            optionsBuilder.UseLazyLoadingProxies();
+            optionsBuilder.UseSqlServer(@"Server=.\;Database=PCConfiguration;Trusted_Connection=True;");
         }
 
         /// <summary>

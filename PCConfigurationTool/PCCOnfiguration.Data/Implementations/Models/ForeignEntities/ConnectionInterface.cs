@@ -13,9 +13,9 @@ namespace PCConfiguration.Data.Models
 
 
         /// <inheritdoc/>
-        public Storage Storage { get; set; }
+        public virtual Storage Storage { get; set; }
 
         /// <inheritdoc/>
-        public VideoCard VideoCard { get; set; }
+        public virtual VideoCard VideoCard { get; set; }
     }
 }
