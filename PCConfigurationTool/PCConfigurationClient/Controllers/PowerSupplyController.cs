@@ -28,22 +28,21 @@ namespace PCConfigurationClient.Controllers
             return View(await this.powerSupplyService.GetAllAsync());
         }
 
-        public async Task<IActionResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(PCItemInputModel inputModel)
         {
-            if (id <= 0 && quantity <= 0)
+            if (inputModel != null && inputModel.Id <= 0 && inputModel.Quantity <= 0)
             {
                 return BadRequest();
             }
 
-            var powerSupply = await this.powerSupplyService.GetByIdAsync(id);
+            var powerSupply = await this.powerSupplyService.GetByIdAsync(inputModel.Id);
             var powerSupplyName = powerSupply.Name;
-            var powerSupplyPrice = await this.powerSupplyService.CalculatePrice(id, quantity);
+            var powerSupplyPrice = await this.powerSupplyService.CalculatePrice(inputModel.Id, inputModel.Id);
 
-            PCItemInputModel inputModel = new PCItemInputModel() { Price = powerSupplyPrice, Name = powerSupplyName };
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(powerSupplyName, powerSupplyPrice);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
-            var key = "PowerSupply" + id;
+            var key = "PowerSupply" + inputModel.Id;
             TempData[key] = serialized;
             TempData.Keep();
 

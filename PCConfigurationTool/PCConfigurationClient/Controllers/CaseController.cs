@@ -29,22 +29,21 @@ namespace PCConfigurationClient.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(PCItemInputModel inputModel)
         {
-            if(id <= 0 && quantity <=0)
+            if(inputModel != null && inputModel.Id <= 0 && inputModel.Quantity <= 0)
             {
                 return BadRequest();
             }
 
-            var compCase = await this.caseService.GetByIdAsync(id);
+            var compCase = await this.caseService.GetByIdAsync(inputModel.Id);
             var caseName = compCase.Name;
-            var casePrice = await this.caseService.CalculatePrice(id, quantity);
+            var casePrice = await this.caseService.CalculatePrice(inputModel.Id, inputModel.Quantity);
             
-            var inputModel = new PCItemInputModel() { Price = casePrice, Name = caseName };
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(caseName, casePrice);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
-            var key = "Case" + id;
+            var key = "Case" + inputModel.Id;
             TempData[key] = serialized;
             TempData.Keep();
 

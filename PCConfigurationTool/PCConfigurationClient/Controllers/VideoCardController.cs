@@ -28,22 +28,21 @@ namespace PCConfigurationClient.Controllers
             return View(await this.videoCardService.GetAllAsync());
         }
 
-        public async Task<IActionResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(PCItemInputModel inputModel)
         {
-            if (id <= 0 && quantity <= 0)
+            if (inputModel != null && inputModel.Id <= 0 && inputModel.Quantity <= 0)
             {
                 return BadRequest();
             }
 
-            var videoCard = await this.videoCardService.GetByIdAsync(id);
+            var videoCard = await this.videoCardService.GetByIdAsync(inputModel.Id);
             var videoCardName = videoCard.Name;
-            var videoCardPrice = await this.videoCardService.CalculatePrice(id, quantity);
+            var videoCardPrice = await this.videoCardService.CalculatePrice(inputModel.Id, inputModel.Quantity);
 
-            var inputModel = new PCItemInputModel() { Price = videoCardPrice, Name = videoCardName };
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(videoCardName, videoCardPrice);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
-            var key = "VideoCard" + id;
+            var key = "VideoCard" + inputModel.Id;
             TempData[key] = serialized;
             TempData.Keep();
 

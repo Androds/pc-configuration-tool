@@ -28,22 +28,21 @@ namespace PCConfigurationClient.Controllers
             return View(await this.motherboardService.GetAllAsync());
         }
 
-        public async Task<IActionResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(PCItemInputModel inputModel)
         {
-            if (id <= 0 || quantity <= 0)
+            if (inputModel != null && inputModel.Id <= 0 && inputModel.Quantity <= 0)
             {
                 return BadRequest();
             }
 
-            var motherboard = await this.motherboardService.GetByIdAsync(id);
+            var motherboard = await this.motherboardService.GetByIdAsync(inputModel.Id);
             var motherboardName = motherboard.Name;
-            var motherboardPrice = await this.motherboardService.CalculatePrice(id, quantity);
+            var motherboardPrice = await this.motherboardService.CalculatePrice(inputModel.Id, inputModel.Id);
 
-            var inputModel = new PCItemInputModel() { Price = motherboardPrice, Name = motherboardName };
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(motherboardName, motherboardPrice);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
-            var key = "Motherboard" + id;
+            var key = "Motherboard" + inputModel.Id;
             TempData[key] = serialized;
             TempData.Keep();
 

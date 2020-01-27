@@ -9,17 +9,17 @@ namespace PCConfigurationClient.Factories
         /// </summary>
         /// <param name="inputModel">The input model.</param>
         /// <returns><see cref="SummaryViewModel"/></returns>
-        public static SummaryViewModel CreateSummaryViewModel(PCItemInputModel inputModel)
+        public static SummaryViewModel CreateSummaryViewModel(string name, decimal price)
         {
-            if (inputModel == null)
+            if (price <= 0 || string.IsNullOrWhiteSpace(name))
             {
                 return null;
             }
 
             var viewModel = new SummaryViewModel
             {
-                Name = inputModel.Name,
-                Price = inputModel.Price,
+                Name = name,
+                Price = price,
                 TotalPrice = 0M,
             };
 

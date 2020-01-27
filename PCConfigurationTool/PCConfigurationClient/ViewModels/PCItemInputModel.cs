@@ -3,7 +3,7 @@ namespace PCConfigurationClient.ViewModels
 {
     public class PCItemInputModel
     {
-        public string Name { get; set; }
-        public decimal Price { get; set; }
+        public int Id { get; set; }
+        public int Quantity { get; set; }
     }
 }

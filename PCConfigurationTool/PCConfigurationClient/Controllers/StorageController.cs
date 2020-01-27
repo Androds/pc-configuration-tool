@@ -29,22 +29,21 @@ namespace PCConfigurationClient.Controllers
             return View(await this.storageService.GetAllAsync());
         }
 
-        public async Task<IActionResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(PCItemInputModel inputModel)
         {
-            if (id <= 0 && quantity <= 0)
+            if (inputModel != null && inputModel.Id <= 0 && inputModel.Quantity <= 0)
             {
                 return BadRequest();
             }
 
-            var storage = await this.storageService.GetByIdAsync(id);
+            var storage = await this.storageService.GetByIdAsync(inputModel.Id);
             var storageName = storage.Name;
-            var storagePrice = await this.storageService.CalculatePrice(id, quantity);
+            var storagePrice = await this.storageService.CalculatePrice(inputModel.Id, inputModel.Id);
 
-            var inputModel = new PCItemInputModel() { Price = storagePrice, Name = storageName };
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(storageName, storagePrice);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
-            var key = "Storage" + id;
+            var key = "Storage" + inputModel.Id;
             TempData[key] = serialized;
             TempData.Keep();
 

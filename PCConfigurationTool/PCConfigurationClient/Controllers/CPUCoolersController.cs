@@ -28,22 +28,21 @@ namespace PCConfigurationClient.Controllers
             return View(await this.cpuCoolerService.GetAllAsync());
         }
 
-        public async Task<IActionResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(PCItemInputModel inputModel)
         {
-            if (id <= 0 && quantity <= 0)
+            if (inputModel != null && inputModel.Id <= 0 && inputModel.Quantity <= 0)
             {
                 return BadRequest();
             }
 
-            var cpuCooler = await this.cpuCoolerService.GetByIdAsync(id);
+            var cpuCooler = await this.cpuCoolerService.GetByIdAsync(inputModel.Id);
             var cpuCoolerName = cpuCooler.Name;
-            var cpuCoolerPrice = await this.cpuCoolerService.CalculatePrice(id, quantity);
+            var cpuCoolerPrice = await this.cpuCoolerService.CalculatePrice(inputModel.Id, inputModel.Quantity);
 
-            var inputModel = new PCItemInputModel() { Price = cpuCoolerPrice, Name = cpuCoolerName };
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(cpuCoolerName, cpuCoolerPrice);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
-            var key = "CPUCooler" + id;
+            var key = "CPUCooler" + inputModel.Id;
             TempData[key] = serialized;
             TempData.Keep();
 

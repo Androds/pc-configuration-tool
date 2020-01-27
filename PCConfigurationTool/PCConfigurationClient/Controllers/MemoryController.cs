@@ -28,22 +28,21 @@ namespace PCConfigurationClient.Controllers
             return View(await this.memoryService.GetAllAsync());
         }
 
-        public async Task<IActionResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(PCItemInputModel inputModel)
         {
-            if (id <= 0 && quantity <= 0)
+            if (inputModel != null && inputModel.Id <= 0 && inputModel.Quantity <= 0)
             {
                 return BadRequest();
             }
 
-            var memory = await this.memoryService.GetByIdAsync(id);
+            var memory = await this.memoryService.GetByIdAsync(inputModel.Id);
             var memoryName = memory.Name;
-            var memoryPrice = await this.memoryService.CalculatePrice(id, quantity);
+            var memoryPrice = await this.memoryService.CalculatePrice(inputModel.Id, inputModel.Quantity);
 
-            var inputModel = new PCItemInputModel() { Price = memoryPrice, Name = memoryName };
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(memoryName, memoryPrice);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
-            var key = "Memory" + id;
+            var key = "Memory" + inputModel.Id;
             TempData[key] = serialized;
             TempData.Keep();
 

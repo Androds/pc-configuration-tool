@@ -6,6 +6,7 @@ using PCConfiguration.Core.Interfaces;
 using PCConfiguration.Data.Interfaces.Repositories;
 using PCConfiguration.Data.Models;
 using PCConfigurationClient.Controllers;
+using PCConfigurationClient.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -57,12 +58,12 @@ namespace PCConfiguration.Tests
         {
             // Arrange
             var mockMotherboardService = new Mock<IService<IRepository<Motherboard>, Motherboard>>();
-
+            var inputModel = new PCItemInputModel() { Id = 0, Quantity = 0 };
             var controller = new MotherboardController(mockMotherboardService.Object);
             controller.ModelState.AddModelError("Quantity", "Required");
 
             // Act
-            var result = controller.Add(0, 0);
+            var result = controller.Add(inputModel);
 
             // Assert
             var badRequestResult = Assert.IsType<BadRequestResult>(result.Result);
@@ -79,9 +80,10 @@ namespace PCConfiguration.Tests
             var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
             var controller = new MotherboardController(mockMotherboardService.Object) { TempData = tempData };
             controller.ModelState.AddModelError("Quantity", "Required");
+            var inputModel = new PCItemInputModel() { Id = 1, Quantity = 1 };
 
             // Act
-            var result = controller.Add(1, 1);
+            var result = controller.Add(inputModel);
 
             // Assert
             Assert.IsType<JsonResult>(result.Result);

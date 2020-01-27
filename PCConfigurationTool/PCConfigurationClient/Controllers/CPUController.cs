@@ -28,22 +28,21 @@ namespace PCConfigurationClient.Controllers
             return View(await this.cpuService.GetAllAsync());
         }
 
-        public async Task<IActionResult> Add(int id, int quantity)
+        public async Task<IActionResult> Add(PCItemInputModel inputModel)
         {
-            if (id <= 0 && quantity <= 0)
+            if (inputModel != null && inputModel.Id <= 0 && inputModel.Quantity <= 0)
             {
                 return BadRequest();
             }
 
-            var cpu = await this.cpuService.GetByIdAsync(id);
+            var cpu = await this.cpuService.GetByIdAsync(inputModel.Id);
             var cpuName = cpu.Name;
-            var cpuPrice = await this.cpuService.CalculatePrice(id, quantity);
+            var cpuPrice = await this.cpuService.CalculatePrice(inputModel.Id, inputModel.Quantity);
 
-            var inputModel = new PCItemInputModel() { Price = cpuPrice, Name = cpuName };
-            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
+            var summaryViewModel = SummaryFactory.CreateSummaryViewModel(cpuName, cpuPrice);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
-            var key = "CPU" + id;
+            var key = "CPU" + inputModel.Id;
             TempData[key] = serialized;
             TempData.Keep();
 
