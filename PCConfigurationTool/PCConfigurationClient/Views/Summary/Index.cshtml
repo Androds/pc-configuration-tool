@@ -7,7 +7,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th class="product-name">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
@@ -23,14 +23,14 @@
                     <img src="@Url.Content(item.ImageSrc)" class="zoom" alt="Image" />
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td class="product-name">
+                <td class="product-price">
                     @String.Format("{0:c}", item.Price)
                 </td>
             </tr>
         }
     <tr>
         <td class="product-name">Overall Total:</td>
-        <td class="product-name">
+        <td class="product-price">">
             @if (Model != null && Model.LastOrDefault() != null)
             {
                 @String.Format("{0:c}", Model.LastOrDefault().TotalPrice)

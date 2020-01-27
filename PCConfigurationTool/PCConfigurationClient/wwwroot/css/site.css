@@ -84,6 +84,16 @@ text-align: center;
 text-align: center;
 }
 
+table td.product-price {
+    font-weight: bold;
+    text-align: center;
+}
+
+table th.product-name {
+    font-weight: bold;
+    text-align: left;
+}
+
 table td.product-name {
 font-weight: bold;
 text-align: left;
