@@ -13,6 +13,10 @@ namespace PCConfigurationClient.Controllers
     {
         private readonly IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PowerSupplyController"/> class.
+        /// </summary>
+        /// <param name="powerSupplyService">The power supply service.</param>
         public PowerSupplyController(IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService)
         {
             this.powerSupplyService = powerSupplyService;
@@ -24,7 +28,6 @@ namespace PCConfigurationClient.Controllers
             return View(await this.powerSupplyService.GetAllAsync());
         }
 
-        // GET: PowerSupply/Details/5
         public async Task<IActionResult> Add(int id, int quantity)
         {
             if (id <= 0 && quantity <= 0)
@@ -36,7 +39,7 @@ namespace PCConfigurationClient.Controllers
             var powerSupplyName = powerSupply.Name;
             var powerSupplyPrice = await this.powerSupplyService.CalculatePrice(id, quantity);
 
-            PCItemInputModel inputModel = new PCItemInputModel() { Price = powerSupplyPrice, Name = powerSupplyName, CurrencySymbol = "$" };
+            PCItemInputModel inputModel = new PCItemInputModel() { Price = powerSupplyPrice, Name = powerSupplyName };
             var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 

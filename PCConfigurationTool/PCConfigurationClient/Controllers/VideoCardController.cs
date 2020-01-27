@@ -13,6 +13,10 @@ namespace PCConfigurationClient.Controllers
     {
         private readonly IService<IRepository<VideoCard>, VideoCard> videoCardService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoCardController"/> class.
+        /// </summary>
+        /// <param name="videoCardService">The video card service.</param>
         public VideoCardController(IService<IRepository<VideoCard>, VideoCard> videoCardService)
         {
             this.videoCardService = videoCardService;
@@ -24,7 +28,6 @@ namespace PCConfigurationClient.Controllers
             return View(await this.videoCardService.GetAllAsync());
         }
 
-        // GET: VideoCard/Details/5
         public async Task<IActionResult> Add(int id, int quantity)
         {
             if (id <= 0 && quantity <= 0)
@@ -36,7 +39,7 @@ namespace PCConfigurationClient.Controllers
             var videoCardName = videoCard.Name;
             var videoCardPrice = await this.videoCardService.CalculatePrice(id, quantity);
 
-            var inputModel = new PCItemInputModel() { Price = videoCardPrice, Name = videoCardName, CurrencySymbol = "$" };
+            var inputModel = new PCItemInputModel() { Price = videoCardPrice, Name = videoCardName };
             var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 

@@ -13,6 +13,10 @@ namespace PCConfigurationClient.Controllers
     {
         private readonly IService<IRepository<Storage>, Storage> storageService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageController"/> class.
+        /// </summary>
+        /// <param name="storageService">The storage service.</param>
         public StorageController(IService<IRepository<Storage>, Storage> storageService)
         {
             this.storageService = storageService;
@@ -25,7 +29,6 @@ namespace PCConfigurationClient.Controllers
             return View(await this.storageService.GetAllAsync());
         }
 
-        // GET: Storage/Details/5
         public async Task<IActionResult> Add(int id, int quantity)
         {
             if (id <= 0 && quantity <= 0)
@@ -37,7 +40,7 @@ namespace PCConfigurationClient.Controllers
             var storageName = storage.Name;
             var storagePrice = await this.storageService.CalculatePrice(id, quantity);
 
-            var inputModel = new PCItemInputModel() { Price = storagePrice, Name = storageName, CurrencySymbol = "$" };
+            var inputModel = new PCItemInputModel() { Price = storagePrice, Name = storageName };
             var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 

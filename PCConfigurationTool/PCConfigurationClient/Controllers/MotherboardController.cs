@@ -13,6 +13,10 @@ namespace PCConfigurationClient.Controllers
     {
         private readonly IService<IRepository<Motherboard>, Motherboard> motherboardService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MotherboardController"/> class.
+        /// </summary>
+        /// <param name="motherboardService">The motherboard service.</param>
         public MotherboardController(IService<IRepository<Motherboard>, Motherboard> motherboardService)
         {
             this.motherboardService = motherboardService;
@@ -24,7 +28,6 @@ namespace PCConfigurationClient.Controllers
             return View(await this.motherboardService.GetAllAsync());
         }
 
-        // GET: Motherboard/Details/5
         public async Task<IActionResult> Add(int id, int quantity)
         {
             if (id <= 0 || quantity <= 0)
@@ -36,7 +39,7 @@ namespace PCConfigurationClient.Controllers
             var motherboardName = motherboard.Name;
             var motherboardPrice = await this.motherboardService.CalculatePrice(id, quantity);
 
-            var inputModel = new PCItemInputModel() { Price = motherboardPrice, Name = motherboardName, CurrencySymbol = "$" };
+            var inputModel = new PCItemInputModel() { Price = motherboardPrice, Name = motherboardName };
             var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 

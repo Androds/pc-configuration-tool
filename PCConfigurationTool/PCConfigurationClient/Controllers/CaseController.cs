@@ -13,18 +13,21 @@ namespace PCConfigurationClient.Controllers
     {
         private readonly IService<IRepository<Case>, Case> caseService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CaseController"/> class.
+        /// </summary>
+        /// <param name="caseService">The case service.</param>
         public CaseController(IService<IRepository<Case>, Case> caseService)
         {
             this.caseService = caseService;
         }
-
+       
         // GET: CPU
         public async Task<IActionResult> Index()
         {
             return View(await this.caseService.GetAllAsync());
         }
-
-        // GET: Case/Add/5
+        
         [HttpPost]
         public async Task<IActionResult> Add(int id, int quantity)
         {
@@ -37,7 +40,7 @@ namespace PCConfigurationClient.Controllers
             var caseName = compCase.Name;
             var casePrice = await this.caseService.CalculatePrice(id, quantity);
             
-            var inputModel = new PCItemInputModel() { Price = casePrice, Name = caseName, CurrencySymbol = "$" };
+            var inputModel = new PCItemInputModel() { Price = casePrice, Name = caseName };
             var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 

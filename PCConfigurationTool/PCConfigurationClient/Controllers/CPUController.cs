@@ -13,6 +13,10 @@ namespace PCConfigurationClient.Controllers
     {
         private readonly IService<IRepository<CPU>, CPU> cpuService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CPUController"/> class.
+        /// </summary>
+        /// <param name="cpuService">The cpu service.</param>
         public CPUController(IService<IRepository<CPU>, CPU> cpuService)
         {
             this.cpuService = cpuService;
@@ -24,7 +28,6 @@ namespace PCConfigurationClient.Controllers
             return View(await this.cpuService.GetAllAsync());
         }
 
-        // GET: CPU/Details/5
         public async Task<IActionResult> Add(int id, int quantity)
         {
             if (id <= 0 && quantity <= 0)
@@ -36,7 +39,7 @@ namespace PCConfigurationClient.Controllers
             var cpuName = cpu.Name;
             var cpuPrice = await this.cpuService.CalculatePrice(id, quantity);
 
-            var inputModel = new PCItemInputModel() { Price = cpuPrice, Name = cpuName, CurrencySymbol = "$" };
+            var inputModel = new PCItemInputModel() { Price = cpuPrice, Name = cpuName };
             var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 

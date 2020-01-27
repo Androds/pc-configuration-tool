@@ -19,6 +19,18 @@ namespace PCConfigurationClient.Controllers
         private readonly IService<IRepository<Storage>, Storage> storageService;
         private readonly IService<IRepository<VideoCard>, VideoCard> videoCardService;
         #endregion
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SeedController"/> class.
+        /// </summary>
+        /// <param name="caseService">The case service.</param>
+        /// <param name="cpuService">The cpu service.</param>
+        /// <param name="cpuCoolerService">The cpu cooler service.</param>
+        /// <param name="memoryService">The memory service.</param>
+        /// <param name="motherboardService">The motherboard service.</param>
+        /// <param name="powerSupplyService">The power supply service.</param>
+        /// <param name="storageService">The storage service.</param>
+        /// <param name="videoCardService">The video card service.</param>
         public SeedController(IService<IRepository<Case>, Case> caseService,
             IService<IRepository<CPU>, CPU> cpuService,
             IService<IRepository<CPUCooler>, CPUCooler> cpuCoolerService,

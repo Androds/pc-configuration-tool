@@ -13,6 +13,10 @@ namespace PCConfigurationClient.Controllers
     {
         private readonly IService<IRepository<CPUCooler>, CPUCooler> cpuCoolerService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CPUCoolersController"/> class.
+        /// </summary>
+        /// <param name="cpuCoolerService">The cpu cooler service.</param>
         public CPUCoolersController(IService<IRepository<CPUCooler>, CPUCooler> cpuCoolerService)
         {
             this.cpuCoolerService = cpuCoolerService;
@@ -24,7 +28,6 @@ namespace PCConfigurationClient.Controllers
             return View(await this.cpuCoolerService.GetAllAsync());
         }
 
-        // GET: CPUCoolers/Details/5
         public async Task<IActionResult> Add(int id, int quantity)
         {
             if (id <= 0 && quantity <= 0)
@@ -36,7 +39,7 @@ namespace PCConfigurationClient.Controllers
             var cpuCoolerName = cpuCooler.Name;
             var cpuCoolerPrice = await this.cpuCoolerService.CalculatePrice(id, quantity);
 
-            var inputModel = new PCItemInputModel() { Price = cpuCoolerPrice, Name = cpuCoolerName, CurrencySymbol = "$" };
+            var inputModel = new PCItemInputModel() { Price = cpuCoolerPrice, Name = cpuCoolerName };
             var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 

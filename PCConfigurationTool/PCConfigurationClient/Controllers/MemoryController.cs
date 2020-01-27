@@ -13,6 +13,10 @@ namespace PCConfigurationClient.Controllers
     {
         private readonly IService<IRepository<Memory>, Memory> memoryService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MemoryController"/> class.
+        /// </summary>
+        /// <param name="memoryService">The memory service.</param>
         public MemoryController(IService<IRepository<Memory>, Memory> memoryService)
         {
             this.memoryService = memoryService;
@@ -24,7 +28,6 @@ namespace PCConfigurationClient.Controllers
             return View(await this.memoryService.GetAllAsync());
         }
 
-        // GET: Memory/Details/5
         public async Task<IActionResult> Add(int id, int quantity)
         {
             if (id <= 0 && quantity <= 0)
@@ -36,7 +39,7 @@ namespace PCConfigurationClient.Controllers
             var memoryName = memory.Name;
             var memoryPrice = await this.memoryService.CalculatePrice(id, quantity);
 
-            var inputModel = new PCItemInputModel() { Price = memoryPrice, Name = memoryName, CurrencySymbol = "$" };
+            var inputModel = new PCItemInputModel() { Price = memoryPrice, Name = memoryName };
             var summaryViewModel = SummaryFactory.CreateSummaryViewModel(inputModel);
             var serialized = JsonConvert.SerializeObject(summaryViewModel);
 
