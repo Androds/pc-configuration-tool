@@ -18,6 +18,6 @@ namespace PCConfiguration.Data.Models
 
 
         public int InterfaceId { get; set; }
-        public ConnectionInterface Interface { get; set; }
+        public virtual ConnectionInterface Interface { get; set; }
     }
 }

@@ -14,7 +14,8 @@ namespace PCConfiguration.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=PCConfiguration;Trusted_Connection=True;");
+            optionsBuilder.UseLazyLoadingProxies();
+            optionsBuilder.UseSqlServer(@"Server=.\;Database=PCConfiguration;Trusted_Connection=True;");
         }
 
         public DbSet<Case> Cases { get; set; }

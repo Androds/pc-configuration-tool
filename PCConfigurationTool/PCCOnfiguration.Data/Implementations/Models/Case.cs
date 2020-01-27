@@ -18,6 +18,6 @@ namespace PCConfiguration.Data.Models
         public short InternalBays { get; set; }
 
         public int TypeId { get; set; }
-        public PCItemType Type { get; set; }
+        public virtual PCItemType Type { get; set; }
     }
 }

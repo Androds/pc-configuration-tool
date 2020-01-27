@@ -15,8 +15,8 @@ namespace PCConfiguration.Data.Models
         public short MaxRam { get; set; }
 
         public int SocketTypeId { get; set; }
-        public PCItemType SocketType { get; set; }
+        public virtual PCItemType SocketType { get; set; }
         public int FormFactorId { get; set; }
-        public FormFactor FormFactor { get; set; }
+        public virtual FormFactor FormFactor { get; set; }
     }
 }

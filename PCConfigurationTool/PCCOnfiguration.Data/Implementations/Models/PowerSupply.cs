@@ -16,6 +16,6 @@ namespace PCConfiguration.Data.Models
         public bool Modular { get; set; }
 
         public int FormFactorId { get; set; }
-        public FormFactor FormFactor { get; set; }
+        public virtual FormFactor FormFactor { get; set; }
     }
 }

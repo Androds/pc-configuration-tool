@@ -13,7 +13,7 @@ namespace PCConfiguration.Core.Services
     {
         public GenericService(TRepository repository)
         {
-            this.Repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            this.Repository = repository; //?? throw new ArgumentNullException(nameof(repository));
         }
         public TRepository Repository { get;set; }
 

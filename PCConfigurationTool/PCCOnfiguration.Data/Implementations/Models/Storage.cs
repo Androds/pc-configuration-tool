@@ -15,11 +15,11 @@ namespace PCConfiguration.Data.Models
         public short Cache { get; set; }
 
         
-        public FormFactor FormFactor { get; set; }
+        public virtual  FormFactor FormFactor { get; set; }
         public int FormFactorId { get; set; }
         public int InterfaceId { get; set; }
-        public ConnectionInterface Interface { get; set; }
+        public virtual ConnectionInterface Interface { get; set; }
         public int TypeId { get; set; }
-        public PCItemType Type { get; set; }
+        public virtual PCItemType Type { get; set; }
     }
 }

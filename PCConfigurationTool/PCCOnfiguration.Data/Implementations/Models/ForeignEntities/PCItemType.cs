@@ -11,9 +11,9 @@ namespace PCConfiguration.Data.Models
         public string Name { get; set; }
 
 
-        public Memory Memory { get; set; }
-        public Motherboard Motherboard { get; set; }
-        public Storage Storage { get; set; }
-        public Case Case { get; set; }
+        public virtual Memory Memory { get; set; }
+        public virtual Motherboard Motherboard { get; set; }
+        public virtual Storage Storage { get; set; }
+        public virtual Case Case { get; set; }
     }
 }

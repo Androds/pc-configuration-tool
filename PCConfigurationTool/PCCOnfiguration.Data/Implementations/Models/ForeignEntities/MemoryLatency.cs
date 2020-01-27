@@ -11,6 +11,6 @@ namespace PCConfiguration.Data.Models
         public string Name { get; set; }
 
 
-        public Memory Memory { get; set; }
+        public virtual  Memory Memory { get; set; }
     }
 }

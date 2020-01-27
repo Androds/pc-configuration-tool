@@ -11,7 +11,7 @@ namespace PCConfiguration.Data.Models
         public string Name { get; set; }
 
         
-        public Storage Storage { get; set; }
-        public VideoCard VideoCard { get; set; }
+        public virtual Storage Storage { get; set; }
+        public virtual VideoCard VideoCard { get; set; }
     }
 }
