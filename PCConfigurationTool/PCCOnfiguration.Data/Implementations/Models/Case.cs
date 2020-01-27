@@ -38,7 +38,7 @@ namespace PCConfiguration.Data.Models
         public int TypeId { get; set; }
 
         /// <inheritdoc/>
-        public PCItemType Type { get; set; }
+        public virtual PCItemType Type { get; set; }
 
         /// <inheritdoc/>
         public string ImageSrc { get; set; }
