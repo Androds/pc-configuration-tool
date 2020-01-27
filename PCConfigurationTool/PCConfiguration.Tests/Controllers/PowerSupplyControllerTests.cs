@@ -35,7 +35,7 @@ namespace PCConfiguration.Tests
         public async Task Index_ReturnsAViewResult_WithAListOfPowerSupplys()
         {
             // Arrange
-            var mockPowerSupplyService = new Mock<IService<IRepository<PowerSupply>, PowerSupply>>();
+            var mockPowerSupplyService = new Mock<IGenericService<IGenericRepository<PowerSupply>, PowerSupply>>();
             mockPowerSupplyService.Setup(repo => repo.GetAllAsync())
                 .ReturnsAsync(GetTestPowerSupplys());
             var controller = new PowerSupplyController(mockPowerSupplyService.Object);
@@ -54,7 +54,7 @@ namespace PCConfiguration.Tests
         public void Add_ReturnsBadRequestResult_WhenModelStateIsInvalid()
         {
             // Arrange
-            var mockPowerSupplyService = new Mock<IService<IRepository<PowerSupply>, PowerSupply>>();
+            var mockPowerSupplyService = new Mock<IGenericService<IGenericRepository<PowerSupply>, PowerSupply>>();
             var inputModel = new PCItemInputModel() { Id = 0, Quantity = 0 };
             var controller = new PowerSupplyController(mockPowerSupplyService.Object);
             controller.ModelState.AddModelError("Quantity", "Required");
@@ -70,7 +70,7 @@ namespace PCConfiguration.Tests
         public void Add_AddsEmployeeAndReturnsARedirect_WhenModelStateIsValid()
         {
             //Arrange
-            var mockPowerSupplyService = new Mock<IService<IRepository<PowerSupply>, PowerSupply>>();
+            var mockPowerSupplyService = new Mock<IGenericService<IGenericRepository<PowerSupply>, PowerSupply>>();
             mockPowerSupplyService.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync(GetPowerSupply())
                 .Verifiable();
             var httpContext = new DefaultHttpContext();

@@ -42,7 +42,7 @@ namespace PCConfiguration.Tests
         public async Task Index_ReturnsAViewResult_WithAListOfCPUCoolers()
         {
             // Arrange
-            var mockCPUCoolerService = new Mock<IService<IRepository<CPUCooler>, CPUCooler>>();
+            var mockCPUCoolerService = new Mock<IGenericService<IGenericRepository<CPUCooler>, CPUCooler>>();
             mockCPUCoolerService.Setup(repo => repo.GetAllAsync())
                 .ReturnsAsync(GetTestCPUCoolers());
             var controller = new CPUCoolersController(mockCPUCoolerService.Object);
@@ -61,7 +61,7 @@ namespace PCConfiguration.Tests
         public void Add_ReturnsBadRequestResult_WhenModelStateIsInvalid()
         {
             // Arrange
-            var mockCPUCoolerService = new Mock<IService<IRepository<CPUCooler>, CPUCooler>>();
+            var mockCPUCoolerService = new Mock<IGenericService<IGenericRepository<CPUCooler>, CPUCooler>>();
             var inputModel = new PCItemInputModel() { Id = 0, Quantity = 0 };
             var controller = new CPUCoolersController(mockCPUCoolerService.Object);
             controller.ModelState.AddModelError("Quantity", "Required");
@@ -77,7 +77,7 @@ namespace PCConfiguration.Tests
         public void Add_AddsEmployeeAndReturnsARedirect_WhenModelStateIsValid()
         {
             //Arrange
-            var mockCPUCoolerService = new Mock<IService<IRepository<CPUCooler>, CPUCooler>>();
+            var mockCPUCoolerService = new Mock<IGenericService<IGenericRepository<CPUCooler>, CPUCooler>>();
             mockCPUCoolerService.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync(GetCPUCooler())
                 .Verifiable();
             var httpContext = new DefaultHttpContext();

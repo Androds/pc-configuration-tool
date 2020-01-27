@@ -11,13 +11,13 @@ namespace PCConfigurationClient.Controllers
 {
     public class CaseController : Controller
     {
-        private readonly IService<IRepository<Case>, Case> caseService;
+        private readonly IGenericService<IGenericRepository<Case>, Case> caseService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CaseController"/> class.
         /// </summary>
         /// <param name="caseService">The case service.</param>
-        public CaseController(IService<IRepository<Case>, Case> caseService)
+        public CaseController(IGenericService<IGenericRepository<Case>, Case> caseService)
         {
             this.caseService = caseService;
         }

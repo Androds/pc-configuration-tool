@@ -38,7 +38,7 @@ namespace PCConfiguration.Tests
         public async Task Index_ReturnsAViewResult_WithAListOfMotherboards()
         {
             // Arrange
-            var mockMotherboardService = new Mock<IService<IRepository<Motherboard>, Motherboard>>();
+            var mockMotherboardService = new Mock<IGenericService<IGenericRepository<Motherboard>, Motherboard>>();
             mockMotherboardService.Setup(repo => repo.GetAllAsync())
                 .ReturnsAsync(GetTestMotherboards());
             var controller = new MotherboardController(mockMotherboardService.Object);
@@ -57,7 +57,7 @@ namespace PCConfiguration.Tests
         public void Add_ReturnsBadRequestResult_WhenModelStateIsInvalid()
         {
             // Arrange
-            var mockMotherboardService = new Mock<IService<IRepository<Motherboard>, Motherboard>>();
+            var mockMotherboardService = new Mock<IGenericService<IGenericRepository<Motherboard>, Motherboard>>();
             var inputModel = new PCItemInputModel() { Id = 0, Quantity = 0 };
             var controller = new MotherboardController(mockMotherboardService.Object);
             controller.ModelState.AddModelError("Quantity", "Required");
@@ -73,7 +73,7 @@ namespace PCConfiguration.Tests
         public void Add_AddsEmployeeAndReturnsARedirect_WhenModelStateIsValid()
         {
             //Arrange
-            var mockMotherboardService = new Mock<IService<IRepository<Motherboard>, Motherboard>>();
+            var mockMotherboardService = new Mock<IGenericService<IGenericRepository<Motherboard>, Motherboard>>();
             mockMotherboardService.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync(GetMotherboard())
                 .Verifiable();
             var httpContext = new DefaultHttpContext();

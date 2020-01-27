@@ -66,7 +66,7 @@ namespace PCConfiguration.Tests
         public async Task Index_ReturnsAViewResult_WithAListOfCases()
         {
             // Arrange
-            var mockCaseService = new Mock<IService<IRepository<Case>, Case>>();
+            var mockCaseService = new Mock<IGenericService<IGenericRepository<Case>, Case>>();
             mockCaseService.Setup(repo => repo.GetAllAsync())
                 .ReturnsAsync(GetTestCases());
             var controller = new CaseController(mockCaseService.Object);
@@ -85,7 +85,7 @@ namespace PCConfiguration.Tests
         public void Add_ReturnsBadRequestResult_WhenModelStateIsInvalid()
         {
             // Arrange
-            var mockCaseService = new Mock<IService<IRepository<Case>, Case>>();
+            var mockCaseService = new Mock<IGenericService<IGenericRepository<Case>, Case>>();
             var inputModel = new PCItemInputModel() { Id = 0, Quantity = 0 };
             var controller = new CaseController(mockCaseService.Object);
             controller.ModelState.AddModelError("Quantity", "Required");
@@ -101,7 +101,7 @@ namespace PCConfiguration.Tests
         public void Add_AddsEmployeeAndReturnsARedirect_WhenModelStateIsValid()
         {
             //Arrange
-            var mockCaseService = new Mock<IService<IRepository<Case>, Case>>();
+            var mockCaseService = new Mock<IGenericService<IGenericRepository<Case>, Case>>();
             mockCaseService.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync(GetCase())
                 .Verifiable();
             var httpContext = new DefaultHttpContext();

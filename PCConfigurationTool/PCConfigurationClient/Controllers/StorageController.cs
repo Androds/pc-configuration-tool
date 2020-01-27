@@ -11,13 +11,13 @@ namespace PCConfigurationClient.Controllers
 {
     public class StorageController : Controller
     {
-        private readonly IService<IRepository<Storage>, Storage> storageService;
+        private readonly IGenericService<IGenericRepository<Storage>, Storage> storageService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageController"/> class.
         /// </summary>
         /// <param name="storageService">The storage service.</param>
-        public StorageController(IService<IRepository<Storage>, Storage> storageService)
+        public StorageController(IGenericService<IGenericRepository<Storage>, Storage> storageService)
         {
             this.storageService = storageService;
         }

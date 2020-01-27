@@ -38,7 +38,7 @@ namespace PCConfiguration.Tests
         public async Task Index_ReturnsAViewResult_WithAListOfMemorys()
         {
             // Arrange
-            var mockMemoryService = new Mock<IService<IRepository<Memory>, Memory>>();
+            var mockMemoryService = new Mock<IGenericService<IGenericRepository<Memory>, Memory>>();
             mockMemoryService.Setup(repo => repo.GetAllAsync())
                 .ReturnsAsync(GetTestMemorys());
             var controller = new MemoryController(mockMemoryService.Object);
@@ -57,7 +57,7 @@ namespace PCConfiguration.Tests
         public void Add_ReturnsBadRequestResult_WhenModelStateIsInvalid()
         {
             // Arrange
-            var mockMemoryService = new Mock<IService<IRepository<Memory>, Memory>>();
+            var mockMemoryService = new Mock<IGenericService<IGenericRepository<Memory>, Memory>>();
             var inputModel = new PCItemInputModel() { Id = 0, Quantity = 0 };
             var controller = new MemoryController(mockMemoryService.Object);
             controller.ModelState.AddModelError("Quantity", "Required");
@@ -73,7 +73,7 @@ namespace PCConfiguration.Tests
         public void Add_AddsEmployeeAndReturnsARedirect_WhenModelStateIsValid()
         {
             //Arrange
-            var mockMemoryService = new Mock<IService<IRepository<Memory>, Memory>>();
+            var mockMemoryService = new Mock<IGenericService<IGenericRepository<Memory>, Memory>>();
             mockMemoryService.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync(GetMemory())
                 .Verifiable();
             var httpContext = new DefaultHttpContext();

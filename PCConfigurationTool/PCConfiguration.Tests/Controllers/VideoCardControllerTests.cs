@@ -36,7 +36,7 @@ namespace PCConfiguration.Tests
         public async Task Index_ReturnsAViewResult_WithAListOfVideoCards()
         {
             // Arrange
-            var mockVideoCardService = new Mock<IService<IRepository<VideoCard>, VideoCard>>();
+            var mockVideoCardService = new Mock<IGenericService<IGenericRepository<VideoCard>, VideoCard>>();
             mockVideoCardService.Setup(repo => repo.GetAllAsync())
                 .ReturnsAsync(GetTestVideoCards());
             var controller = new VideoCardController(mockVideoCardService.Object);
@@ -55,7 +55,7 @@ namespace PCConfiguration.Tests
         public void Add_ReturnsBadRequestResult_WhenModelStateIsInvalid()
         {
             // Arrange
-            var mockVideoCardService = new Mock<IService<IRepository<VideoCard>, VideoCard>>();
+            var mockVideoCardService = new Mock<IGenericService<IGenericRepository<VideoCard>, VideoCard>>();
             var inputModel = new PCItemInputModel() { Id = 0, Quantity = 0 };
             var controller = new VideoCardController(mockVideoCardService.Object);
             controller.ModelState.AddModelError("Quantity", "Required");
@@ -71,7 +71,7 @@ namespace PCConfiguration.Tests
         public void Add_AddsEmployeeAndReturnsARedirect_WhenModelStateIsValid()
         {
             //Arrange
-            var mockVideoCardService = new Mock<IService<IRepository<VideoCard>, VideoCard>>();
+            var mockVideoCardService = new Mock<IGenericService<IGenericRepository<VideoCard>, VideoCard>>();
             mockVideoCardService.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync(GetVideoCard())
                 .Verifiable();
             var httpContext = new DefaultHttpContext();

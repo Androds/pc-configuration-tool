@@ -11,13 +11,13 @@ namespace PCConfigurationClient.Controllers
 {
     public class MemoryController : Controller
     {
-        private readonly IService<IRepository<Memory>, Memory> memoryService;
+        private readonly IGenericService<IGenericRepository<Memory>, Memory> memoryService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MemoryController"/> class.
         /// </summary>
         /// <param name="memoryService">The memory service.</param>
-        public MemoryController(IService<IRepository<Memory>, Memory> memoryService)
+        public MemoryController(IGenericService<IGenericRepository<Memory>, Memory> memoryService)
         {
             this.memoryService = memoryService;
         }

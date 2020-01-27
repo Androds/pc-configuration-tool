@@ -16,5 +16,21 @@ namespace PCConfiguration.Core.Interfaces
         /// Gets or sets the repository used to execute the database operations.
         /// </summary>
         TRepository Repository { get; set; }
+
+        /// <summary>
+        /// Gets the <see cref="Case"/> by identifier asynchronously.
+        /// </summary>
+        /// <param name="id">The identifier of the case.</param>
+        /// <returns>An instance of the <see cref="Case"/></returns>
+        Task<TEntity> GetByIdAsync(int id);
+
+
+        /// <summary>
+        /// Calculates the price of the <see cref="Case"/> by the given quantity.
+        /// </summary>
+        /// <param name="caseId">The case identifier.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns>The price of the <see cref="Case"/></returns>
+        Task<decimal> CalculatePrice(int id, int quantity);
     }
 }

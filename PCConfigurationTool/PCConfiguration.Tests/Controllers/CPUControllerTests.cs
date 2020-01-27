@@ -33,7 +33,7 @@ namespace PCConfiguration.Tests
         public async Task Index_ReturnsAViewResult_WithAListOfCPUs()
         {
             // Arrange
-            var mockCPUService = new Mock<IService<IRepository<CPU>, CPU>>();
+            var mockCPUService = new Mock<IGenericService<IGenericRepository<CPU>, CPU>>();
             mockCPUService.Setup(repo => repo.GetAllAsync())
                 .ReturnsAsync(GetTestCPUs());
             var controller = new CPUController(mockCPUService.Object);
@@ -52,7 +52,7 @@ namespace PCConfiguration.Tests
         public void Add_ReturnsBadRequestResult_WhenModelStateIsInvalid()
         {
             // Arrange
-            var mockCPUService = new Mock<IService<IRepository<CPU>, CPU>>();
+            var mockCPUService = new Mock<IGenericService<IGenericRepository<CPU>, CPU>>();
             var inputModel = new PCItemInputModel() { Id = 0, Quantity = 0 };
             var controller = new CPUController(mockCPUService.Object);
             controller.ModelState.AddModelError("Quantity", "Required");
@@ -68,7 +68,7 @@ namespace PCConfiguration.Tests
         public void Add_AddsEmployeeAndReturnsARedirect_WhenModelStateIsValid()
         {
             //Arrange
-            var mockCPUService = new Mock<IService<IRepository<CPU>, CPU>>();
+            var mockCPUService = new Mock<IGenericService<IGenericRepository<CPU>, CPU>>();
             mockCPUService.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync(GetCPU())
                 .Verifiable();
             var httpContext = new DefaultHttpContext();

@@ -11,13 +11,13 @@ namespace PCConfigurationClient.Controllers
 {
     public class CPUCoolersController : Controller
     {
-        private readonly IService<IRepository<CPUCooler>, CPUCooler> cpuCoolerService;
+        private readonly IGenericService<IGenericRepository<CPUCooler>, CPUCooler> cpuCoolerService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CPUCoolersController"/> class.
         /// </summary>
         /// <param name="cpuCoolerService">The cpu cooler service.</param>
-        public CPUCoolersController(IService<IRepository<CPUCooler>, CPUCooler> cpuCoolerService)
+        public CPUCoolersController(IGenericService<IGenericRepository<CPUCooler>, CPUCooler> cpuCoolerService)
         {
             this.cpuCoolerService = cpuCoolerService;
         }

@@ -10,14 +10,14 @@ namespace PCConfigurationClient.Controllers
     public class SeedController : ControllerBase
     {
         #region fields
-        private readonly IService<IRepository<CPU>, CPU> cpuService;
-        private readonly IService<IRepository<Case>, Case> caseService;
-        private readonly IService<IRepository<CPUCooler>, CPUCooler> cpuCoolerService;
-        private readonly IService<IRepository<Memory>, Memory> memoryService;
-        private readonly IService<IRepository<Motherboard>, Motherboard> motherboardService;
-        private readonly IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService;
-        private readonly IService<IRepository<Storage>, Storage> storageService;
-        private readonly IService<IRepository<VideoCard>, VideoCard> videoCardService;
+        private readonly IGenericService<IGenericRepository<CPU>, CPU> cpuService;
+        private readonly IGenericService<IGenericRepository<Case>, Case> caseService;
+        private readonly IGenericService<IGenericRepository<CPUCooler>, CPUCooler> cpuCoolerService;
+        private readonly IGenericService<IGenericRepository<Memory>, Memory> memoryService;
+        private readonly IGenericService<IGenericRepository<Motherboard>, Motherboard> motherboardService;
+        private readonly IGenericService<IGenericRepository<PowerSupply>, PowerSupply> powerSupplyService;
+        private readonly IGenericService<IGenericRepository<Storage>, Storage> storageService;
+        private readonly IGenericService<IGenericRepository<VideoCard>, VideoCard> videoCardService;
         #endregion
 
         /// <summary>
@@ -31,14 +31,14 @@ namespace PCConfigurationClient.Controllers
         /// <param name="powerSupplyService">The power supply service.</param>
         /// <param name="storageService">The storage service.</param>
         /// <param name="videoCardService">The video card service.</param>
-        public SeedController(IService<IRepository<Case>, Case> caseService,
-            IService<IRepository<CPU>, CPU> cpuService,
-            IService<IRepository<CPUCooler>, CPUCooler> cpuCoolerService,
-            IService<IRepository<Memory>, Memory> memoryService,
-            IService<IRepository<Motherboard>, Motherboard> motherboardService,
-            IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService,
-            IService<IRepository<Storage>, Storage> storageService,
-            IService<IRepository<VideoCard>, VideoCard> videoCardService)
+        public SeedController(IGenericService<IGenericRepository<Case>, Case> caseService,
+            IGenericService<IGenericRepository<CPU>, CPU> cpuService,
+            IGenericService<IGenericRepository<CPUCooler>, CPUCooler> cpuCoolerService,
+            IGenericService<IGenericRepository<Memory>, Memory> memoryService,
+            IGenericService<IGenericRepository<Motherboard>, Motherboard> motherboardService,
+            IGenericService<IGenericRepository<PowerSupply>, PowerSupply> powerSupplyService,
+            IGenericService<IGenericRepository<Storage>, Storage> storageService,
+            IGenericService<IGenericRepository<VideoCard>, VideoCard> videoCardService)
         {
             this.caseService = caseService;
             this.cpuService = cpuService;

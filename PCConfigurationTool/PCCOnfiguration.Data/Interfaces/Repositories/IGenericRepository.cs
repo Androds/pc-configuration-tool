@@ -10,5 +10,7 @@ namespace PCConfiguration.Data.Interfaces.Repositories
         IEnumerable<TEntity> GetAll();
         void Create(TEntity obj);
         Task<IEnumerable<TEntity>> GetAllAsync();
+        Task<TEntity> GetByIdAsync(int id);
+        Task<decimal> CalculatePrice(int id, int quantity);
     }
 }

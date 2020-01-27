@@ -41,7 +41,7 @@ namespace PCConfiguration.Tests
         public async Task Index_ReturnsAViewResult_WithAListOfStorages()
         {
             // Arrange
-            var mockStorageService = new Mock<IService<IRepository<Storage>, Storage>>();
+            var mockStorageService = new Mock<IGenericService<IGenericRepository<Storage>, Storage>>();
             mockStorageService.Setup(repo => repo.GetAllAsync())
                 .ReturnsAsync(GetTestStorages());
             var controller = new StorageController(mockStorageService.Object);
@@ -60,7 +60,7 @@ namespace PCConfiguration.Tests
         public void Add_ReturnsBadRequestResult_WhenModelStateIsInvalid()
         {
             // Arrange
-            var mockStorageService = new Mock<IService<IRepository<Storage>, Storage>>();
+            var mockStorageService = new Mock<IGenericService<IGenericRepository<Storage>, Storage>>();
             var inputModel = new PCItemInputModel() { Id = 0, Quantity = 0 };
             var controller = new StorageController(mockStorageService.Object);
             controller.ModelState.AddModelError("Quantity", "Required");
@@ -76,7 +76,7 @@ namespace PCConfiguration.Tests
         public void Add_AddsEmployeeAndReturnsARedirect_WhenModelStateIsValid()
         {
             //Arrange
-            var mockStorageService = new Mock<IService<IRepository<Storage>, Storage>>();
+            var mockStorageService = new Mock<IGenericService<IGenericRepository<Storage>, Storage>>();
             mockStorageService.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync(GetStorage())
                 .Verifiable();
             var httpContext = new DefaultHttpContext();

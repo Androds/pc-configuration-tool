@@ -11,13 +11,13 @@ namespace PCConfigurationClient.Controllers
 {
     public class PowerSupplyController : Controller
     {
-        private readonly IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService;
+        private readonly IGenericService<IGenericRepository<PowerSupply>, PowerSupply> powerSupplyService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PowerSupplyController"/> class.
         /// </summary>
         /// <param name="powerSupplyService">The power supply service.</param>
-        public PowerSupplyController(IService<IRepository<PowerSupply>, PowerSupply> powerSupplyService)
+        public PowerSupplyController(IGenericService<IGenericRepository<PowerSupply>, PowerSupply> powerSupplyService)
         {
             this.powerSupplyService = powerSupplyService;
         }
