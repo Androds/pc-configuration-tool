@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PCConfiguration.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PCConfiguration.Data
 {

@@ -1,11 +1,8 @@
 ﻿using PCConfiguration.Core.Interfaces;
 using PCConfiguration.Data.Interfaces.Repositories;
 using PCConfiguration.Data.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-
 namespace PCConfiguration.Core.Services
 {
     public class MemoryService : IService<IRepository<Memory>, Memory>

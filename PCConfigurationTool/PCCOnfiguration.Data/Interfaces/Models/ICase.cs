@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PCConfiguration.Data.Interfaces.Models
+﻿namespace PCConfiguration.Data.Interfaces.Models
 {
     public interface ICase : IPCItem
     {

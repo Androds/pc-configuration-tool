@@ -1,7 +1,5 @@
 ﻿using PCConfiguration.Data.Interfaces.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace PCConfiguration.Data.Models
 {

@@ -1,5 +1,3 @@
-using System;
-
 namespace PCConfigurationClient.Models
 {
     public class ErrorViewModel
