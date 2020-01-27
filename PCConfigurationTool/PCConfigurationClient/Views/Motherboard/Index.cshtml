@@ -14,7 +14,7 @@
             var imageSrc = row.find('.zoom').attr('src');
             if (quantity > 0) {
                 $.post(url, { id: $(this).data('id'), quantity: quantity, imageSrc }, function (result) {
-                    $('.toast-body').text(result.name + ' added.');
+                    $(".toast-body").html('<img src="' + result.imageSrc + '" class="zoom" height="32px" width="32px" alt="Image" /> ' + result.name + ' added.');
                     $('.toast').toast('show');
                 });
             }
