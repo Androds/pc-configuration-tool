@@ -10,11 +10,17 @@ namespace PCConfiguration.Data.Implementations.Repositories
     public class PowerSupplyRepository : IRepository<PowerSupply>
     {
         private PcDbContext _context = null;
-                
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PowerSupplyRepository"/> class.
+        /// </summary>
+        /// <param name="_context">The context.</param>
         public PowerSupplyRepository(PcDbContext _context)
         {
             this._context = _context;
         }
+
+        /// <inheritdoc/>
         public void Create(PowerSupply powerSupply)
         {
             if (powerSupply != null && this._context != null)
@@ -24,6 +30,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<PowerSupply> GetAll()
         {
             if(this._context != null)
@@ -34,6 +41,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return new List<PowerSupply>();
         }
 
+        /// <inheritdoc/>
         public async Task<IEnumerable<PowerSupply>> GetAllAsync()
         {
             if(this._context != null)
@@ -44,6 +52,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return await Task.FromResult<IEnumerable<PowerSupply>>(null);
         }
 
+        /// <inheritdoc/>
         public async Task<PowerSupply> GetByIdAsync(int id)
         {
             if(id > 0 && this._context != null)

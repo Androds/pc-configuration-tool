@@ -10,11 +10,17 @@ namespace PCConfiguration.Data.Implementations.Repositories
     public class CPURepository : IRepository<CPU>
     {
         private PcDbContext _context = null;
-                
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CPURepository"/> class.
+        /// </summary>
+        /// <param name="_context">The context.</param>
         public CPURepository(PcDbContext _context)
         {   
             this._context = _context;
         }
+
+        /// <inheritdoc/>
         public void Create(CPU cpu)
         {
             if (_context != null && cpu != null)
@@ -24,6 +30,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<CPU> GetAll()
         {
             if(this._context != null)
@@ -34,6 +41,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return new List<CPU>();
         }
 
+        /// <inheritdoc/>
         public async Task<IEnumerable<CPU>> GetAllAsync()
         {
             if (this._context != null)
@@ -44,6 +52,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return await Task.FromResult<IEnumerable<CPU>>(null);
         }
 
+        /// <inheritdoc/>
         public async Task<CPU> GetByIdAsync(int id)
         {
             if (this._context != null && id > 0)

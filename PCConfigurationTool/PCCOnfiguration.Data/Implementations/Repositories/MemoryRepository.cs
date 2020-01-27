@@ -11,11 +11,16 @@ namespace PCConfiguration.Data.Implementations.Repositories
     {
         private PcDbContext _context = null;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MemoryRepository"/> class.
+        /// </summary>
+        /// <param name="_context">The context.</param>
         public MemoryRepository(PcDbContext _context)
         {
             this._context = _context;
         }
 
+        /// <inheritdoc/>
         public void Create(Memory memory)
         {
             if (this._context != null && memory != null)
@@ -26,6 +31,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
 
         }
 
+        /// <inheritdoc/>
         public IEnumerable<Memory> GetAll()
         {
             if (this._context != null)
@@ -35,6 +41,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return new List<Memory>();
         }
 
+        /// <inheritdoc/>
         public async Task<IEnumerable<Memory>> GetAllAsync()
         {
             if (this._context != null)
@@ -45,6 +52,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return await Task.FromResult<IEnumerable<Memory>>(null);
         }
 
+        /// <inheritdoc/>
         public async Task<Memory> GetByIdAsync(int id)
         {
             if (this._context != null && id > 0)

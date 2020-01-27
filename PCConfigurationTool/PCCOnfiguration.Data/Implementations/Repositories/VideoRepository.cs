@@ -10,7 +10,11 @@ namespace PCConfiguration.Data.Implementations.Repositories
     public class VideoCardRepository : IRepository<VideoCard>
     {
         private PcDbContext _context = null;
-                
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoCardRepository"/> class.
+        /// </summary>
+        /// <param name="_context">The context.</param>
         public VideoCardRepository(PcDbContext _context)
         {
             this._context = _context;
@@ -24,6 +28,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<VideoCard> GetAll()
         {
             if(this._context != null)
@@ -34,6 +39,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return new List<VideoCard>();
         }
 
+        /// <inheritdoc/>
         public async Task<IEnumerable<VideoCard>> GetAllAsync()
         {
             if(this._context != null)
@@ -44,6 +50,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return await Task.FromResult<IEnumerable<VideoCard>>(null);
         }
 
+        /// <inheritdoc/>
         public async Task<VideoCard> GetByIdAsync(int id)
         {
             if(id > 0 && this._context != null)

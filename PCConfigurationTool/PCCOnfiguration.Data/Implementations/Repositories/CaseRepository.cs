@@ -10,11 +10,17 @@ namespace PCConfiguration.Data.Implementations.Repositories
     public class CaseRepository : IRepository<Case>
     {
         private PcDbContext _context = null;
-                
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CaseRepository"/> class.
+        /// </summary>
+        /// <param name="_context">The context.</param>
         public CaseRepository(PcDbContext _context)
         {
             this._context = _context;
         }
+
+        /// <inheritdoc/>
         public void Create(Case compCase)
         {
             if(compCase != null && this._context != null) {
@@ -23,6 +29,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<Case> GetAll()
         {
             if (_context != null)
@@ -33,6 +40,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return new List<Case>();
         }
 
+        /// <inheritdoc/>
         public async Task<IEnumerable<Case>> GetAllAsync()
         {
             if (_context != null)
@@ -43,6 +51,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return await Task.FromResult<IEnumerable<Case>>(null);
         }
 
+        /// <inheritdoc/>
         public async Task<Case> GetByIdAsync(int id)
         {
             if (id > 0 && this._context != null)

@@ -11,10 +11,16 @@ namespace PCConfiguration.Data.Implementations.Repositories
     {
         private PcDbContext _context = null;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageRepository"/> class.
+        /// </summary>
+        /// <param name="_context">The context.</param>
         public StorageRepository(PcDbContext _context)
         {
             this._context = _context;
         }
+
+        /// <inheritdoc/>
         public void Create(Storage storage)
         {
             if (storage != null && this._context != null)
@@ -24,6 +30,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<Storage> GetAll()
         {
             if (this._context != null)
@@ -34,6 +41,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return new List<Storage>();
         }
 
+        /// <inheritdoc/>
         public async Task<IEnumerable<Storage>> GetAllAsync()
         {
             if(this._context != null)
@@ -44,6 +52,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
             return await Task.FromResult<IEnumerable<Storage>>(null);
         }
 
+        /// <inheritdoc/>
         public async Task<Storage> GetByIdAsync(int id)
         {
             if(id > 0 && this._context != null)
