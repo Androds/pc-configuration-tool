@@ -36,5 +36,8 @@ namespace PCConfiguration.Data.Models
 
         /// <inheritdoc/>
         public MemoryLatency CASLatency { get; set; }
+
+        /// <inheritdoc/>
+        public string ImageSrc { get; set; }
     }
 }

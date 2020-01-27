@@ -27,5 +27,8 @@ namespace PCConfiguration.Data.Models
         /// <inheritdoc/>
         [NotMapped]
         public int Quantity { get; set; } = 1;
+
+        /// <inheritdoc/>
+        public string ImageSrc { get; set; }
     }
 }

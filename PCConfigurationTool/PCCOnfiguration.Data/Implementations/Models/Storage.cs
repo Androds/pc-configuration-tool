@@ -42,5 +42,8 @@ namespace PCConfiguration.Data.Models
 
         /// <inheritdoc/>
         public PCItemType Type { get; set; }
+
+        /// <inheritdoc/>
+        public string ImageSrc { get; set; }
     }
 }

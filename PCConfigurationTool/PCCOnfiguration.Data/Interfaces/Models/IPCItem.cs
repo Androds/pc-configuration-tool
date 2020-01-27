@@ -33,5 +33,13 @@
         /// The quantity.
         /// </value>
         public int Quantity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the image source.
+        /// </summary>
+        /// <value>
+        /// The image source.
+        /// </value>
+        public string ImageSrc { get; set; }
     }
 }

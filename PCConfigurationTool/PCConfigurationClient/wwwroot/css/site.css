@@ -12,6 +12,11 @@ a {
 color: #0366d6;
 }
 
+td > img {
+    width: 32px;
+    height: 32px;
+}
+
 input[type=checkbox].check-box {
     position: absolute;
     z-index: -1000;
@@ -71,6 +76,7 @@ text-align: center;
 
 table td.product-name {
 font-weight: bold;
+text-align: left;
 }
 
 .btnAdd {

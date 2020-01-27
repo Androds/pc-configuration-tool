@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PCConfiguration.Data;
 
 namespace PCConfiguration.Data.Migrations
 {
     [DbContext(typeof(PcDbContext))]
-    partial class PcDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200127121716_Added ImageSrc column")]
+    partial class AddedImageSrccolumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
