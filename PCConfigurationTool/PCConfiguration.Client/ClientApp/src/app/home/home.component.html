@@ -1,0 +1,74 @@
+  <div class="title">
+    <h1>Choose a Case</h1>
+  </div>
+
+  <table class="table" *ngIf="cases">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Color</th>
+        <th>PowerSupply</th>
+        <th>Window</th>
+        <th>ExternalBays</th>
+        <th>InternalBays</th>
+        <th>Type</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <a href ="CPU" class="btnNext" >Next</a>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr *ngFor="let compCase of cases">
+        <td class="product-name">
+          <img src="{{compCase.imageSrc}}" class="zoom" alt="Image" />
+          {{ compCase.name }}
+        </td>
+        <td>{{ compCase.color }}</td>
+        <td>
+          {{compCase.powerSupply }}
+        </td>
+        <td>
+          {{ compCase.window }}
+          <label class="css-label" ></label>
+        </td>
+        <td>
+          {{ compCase.externalBays }}
+        </td>
+        <td>
+          {{ compCase.internalBays }}
+        </td>
+        <td>
+          {{compCase.type}}
+        </td>
+        <td>
+          <div class="number-input">
+            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+            <input type="number" value="1" class="quantity" />
+            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+          </div>
+        </td>
+        <td class="product-price">
+          {{ compCase.price }}
+        </td>
+        <td>
+          <button type="button" class="btnAdd" data-id="{{compCase.id}}">Add</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,316 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\assets\images\Case\0a4b3a6ad0b27387436fd279017e106b.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Case\604fef5ac9874dffa927a3db98c1188d.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Case\8058a5658a08dbd68ed2f88ab8e70df7.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Case\a6a5be8145c8949aa7289ed956ef7d44.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Case\c53099401cf671d634e227a3ae029198.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Case\fe7584667e240572a13c154d663a2200.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPUCoolers\2af62e02efa397f4a4c8bb1009be66c7.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPUCoolers\351c9a441cd970d83faee6f581d07f73.med.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPUCoolers\623066a73a9f4feafdea3ae659f80705.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPUCoolers\727b2d396d060c5982ad3fa62e0fdd42.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPUCoolers\8ab57dc3c0eb346c72ef7a2405e31227.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPUCoolers\ddea57de9797549e80d05fb3acb2e83d.med.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPU\23cd3adfd50037c1b44d6d53edb15248.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPU\3760e89d1820da393f084e2c18a62e3b.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPU\3b2d769c28b9890779f87a7568887dfc.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPU\41EDFtP5hpL.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPU\4e84967ef18c9b42e543b58c836d73ef.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\CPU\55aea2dd64e2e3a3e3b1d678048d8d76.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\csscheckbox.png" />
+    <None Remove="ClientApp\src\assets\images\Memory\41MnBbpSEkL.jpg" />
+    <None Remove="ClientApp\src\assets\images\Memory\41rLxvkrWbL.jpg" />
+    <None Remove="ClientApp\src\assets\images\Memory\87cd8e9d02ffb0997769f4a4d5969669.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Memory\9597c74b5d0eaefe086ecd07194a1978.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Memory\aace27f895023030d3a7631beb093016.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Memory\d62078e82b57dca6362b1485f39e1064.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Motherboard\51DZf-KOjZL.jpg" />
+    <None Remove="ClientApp\src\assets\images\Motherboard\65d2e2e1dd6c41fe051500c6d88ffe0c.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Motherboard\66e5b5e4d0a52b6a2f99bb53bf52eee7.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Motherboard\7fe5cb1d35e7385f6cd195e787ab9274.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Motherboard\a735153cb96091c6e69f267386e177df.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Motherboard\de8a63a66404b62463a5c4f898131b38.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\PowerSupply\02951377c9eed1e21fc3d8ba6092717e.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\PowerSupply\41TubKs3apL.jpg" />
+    <None Remove="ClientApp\src\assets\images\PowerSupply\41WlwxBojdL.jpg" />
+    <None Remove="ClientApp\src\assets\images\PowerSupply\51lUqysCuDL.jpg" />
+    <None Remove="ClientApp\src\assets\images\PowerSupply\51Q-akpuooL.jpg" />
+    <None Remove="ClientApp\src\assets\images\PowerSupply\b624497b6d3a1589cfc26c69467f05c8.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Storage\09a31f32abb3daaf5ed9b849bd60e675.256p (1).jpg" />
+    <None Remove="ClientApp\src\assets\images\Storage\09a31f32abb3daaf5ed9b849bd60e675.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Storage\41qR7C253KL.jpg" />
+    <None Remove="ClientApp\src\assets\images\Storage\41UKoJx2tZL.jpg" />
+    <None Remove="ClientApp\src\assets\images\Storage\72ac6b04347d22c2592029d4a49bc5ed.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\Storage\c7b5b7dacbecdcdd0e073b761193eef6.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\VideoCard\0174f5005fe9f34decdf2d379bfe7221.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\VideoCard\1b6084a197c46a295eb03b6ed062eda2.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\VideoCard\41bcSvsQDtL.jpg" />
+    <None Remove="ClientApp\src\assets\images\VideoCard\51LasfmJYL.jpg" />
+    <None Remove="ClientApp\src\assets\images\VideoCard\7a8d66854d65f497aca573e84772d861.256p.jpg" />
+    <None Remove="ClientApp\src\assets\images\VideoCard\85bc273ac4645d65c47fc646b940da9c.256p.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\src\assets\images\Case\0a4b3a6ad0b27387436fd279017e106b.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Case\604fef5ac9874dffa927a3db98c1188d.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Case\8058a5658a08dbd68ed2f88ab8e70df7.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Case\a6a5be8145c8949aa7289ed956ef7d44.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Case\c53099401cf671d634e227a3ae029198.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Case\fe7584667e240572a13c154d663a2200.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPUCoolers\2af62e02efa397f4a4c8bb1009be66c7.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPUCoolers\351c9a441cd970d83faee6f581d07f73.med.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPUCoolers\623066a73a9f4feafdea3ae659f80705.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPUCoolers\727b2d396d060c5982ad3fa62e0fdd42.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPUCoolers\8ab57dc3c0eb346c72ef7a2405e31227.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPUCoolers\ddea57de9797549e80d05fb3acb2e83d.med.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPU\23cd3adfd50037c1b44d6d53edb15248.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPU\3760e89d1820da393f084e2c18a62e3b.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPU\3b2d769c28b9890779f87a7568887dfc.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPU\41EDFtP5hpL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPU\4e84967ef18c9b42e543b58c836d73ef.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\CPU\55aea2dd64e2e3a3e3b1d678048d8d76.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\csscheckbox.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Memory\41MnBbpSEkL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Memory\41rLxvkrWbL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Memory\87cd8e9d02ffb0997769f4a4d5969669.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Memory\9597c74b5d0eaefe086ecd07194a1978.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Memory\aace27f895023030d3a7631beb093016.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Memory\d62078e82b57dca6362b1485f39e1064.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Motherboard\51DZf-KOjZL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Motherboard\65d2e2e1dd6c41fe051500c6d88ffe0c.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Motherboard\66e5b5e4d0a52b6a2f99bb53bf52eee7.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Motherboard\7fe5cb1d35e7385f6cd195e787ab9274.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Motherboard\a735153cb96091c6e69f267386e177df.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Motherboard\de8a63a66404b62463a5c4f898131b38.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\PowerSupply\02951377c9eed1e21fc3d8ba6092717e.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\PowerSupply\41TubKs3apL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\PowerSupply\41WlwxBojdL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\PowerSupply\51lUqysCuDL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\PowerSupply\51Q-akpuooL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\PowerSupply\b624497b6d3a1589cfc26c69467f05c8.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Storage\09a31f32abb3daaf5ed9b849bd60e675.256p (1).jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Storage\09a31f32abb3daaf5ed9b849bd60e675.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Storage\41qR7C253KL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Storage\41UKoJx2tZL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Storage\72ac6b04347d22c2592029d4a49bc5ed.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\Storage\c7b5b7dacbecdcdd0e073b761193eef6.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\VideoCard\0174f5005fe9f34decdf2d379bfe7221.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\VideoCard\1b6084a197c46a295eb03b6ed062eda2.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\VideoCard\41bcSvsQDtL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\VideoCard\51LasfmJYL.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\VideoCard\7a8d66854d65f497aca573e84772d861.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\VideoCard\85bc273ac4645d65c47fc646b940da9c.256p.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\interfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PCConfiguration.Core\PCConfiguration.Core.csproj" />
+    <ProjectReference Include="..\PCCOnfiguration.Data\PCConfiguration.Data.csproj" />
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>
