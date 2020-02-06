@@ -35,7 +35,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if(this._context != null)
             {
-                return this._context.Motherboards.Include(m => m.FormFactor).Include(m => m.SocketType).ToList();
+                return this._context.Motherboards.Include(m => m.FormFactor).Include(m => m.SocketType).AsNoTracking().ToList();
             }
 
             return new List<Motherboard>();
@@ -46,7 +46,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (this._context != null)
             {
-                return await this._context.Motherboards.Include(m => m.FormFactor).Include(m => m.SocketType).ToListAsync();
+                return await this._context.Motherboards.Include(m => m.FormFactor).Include(m => m.SocketType).AsNoTracking().ToListAsync();
             }
 
             return await Task.FromResult<IEnumerable<Motherboard>>(null);
@@ -57,7 +57,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (this._context != null && id > 0)
             {
-                return await this._context.Motherboards.Where(c => c.Id == id).FirstOrDefaultAsync();
+                return await this._context.Motherboards.Where(c => c.Id == id).AsNoTracking().FirstOrDefaultAsync();
             }
 
             return await Task.FromResult<Motherboard>(null);

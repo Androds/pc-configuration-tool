@@ -35,7 +35,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (_context != null)
             {
-                return this._context.CPUCoolers.ToList();
+                return this._context.CPUCoolers.AsNoTracking().ToList();
             }
 
             return new List<CPUCooler>();
@@ -46,7 +46,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (this._context != null)
             {
-                return await this._context.CPUCoolers.ToListAsync();
+                return await this._context.CPUCoolers.AsNoTracking().ToListAsync();
             }
 
             return await Task.FromResult<IEnumerable<CPUCooler>>(null);
@@ -57,7 +57,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if(id > 0 && this._context != null)
             {
-                return await this._context.CPUCoolers.Where(c => c.Id == id).FirstOrDefaultAsync();
+                return await this._context.CPUCoolers.Where(c => c.Id == id).AsNoTracking().FirstOrDefaultAsync();
             }
 
             return await Task.FromResult<CPUCooler>(null);

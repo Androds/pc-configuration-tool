@@ -35,7 +35,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if(this._context != null)
             {
-                return this._context.PowerSupplies.Include(p => p.FormFactor).ToList();
+                return this._context.PowerSupplies.Include(p => p.FormFactor).AsNoTracking().ToList();
             }
 
             return new List<PowerSupply>();
@@ -46,7 +46,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if(this._context != null)
             {
-                return await this._context.PowerSupplies.Include(p => p.FormFactor).ToListAsync();
+                return await this._context.PowerSupplies.Include(p => p.FormFactor).AsNoTracking().ToListAsync();
             }
 
             return await Task.FromResult<IEnumerable<PowerSupply>>(null);
@@ -57,7 +57,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if(id > 0 && this._context != null)
             {
-                return await this._context.PowerSupplies.Where(c => c.Id == id).FirstOrDefaultAsync();
+                return await this._context.PowerSupplies.Where(c => c.Id == id).AsNoTracking().FirstOrDefaultAsync();
             }
 
             return await Task.FromResult<PowerSupply>(null);

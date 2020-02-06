@@ -1,0 +1,42 @@
+﻿@page
+@model PCConfiguration.Client.SummaryModel
+
+<div class="title">
+    <h1>Order Summary</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="product-name">
+                @Html.DisplayNameFor(model => model.Summary.FirstOrDefault().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Summary.FirstOrDefault().Price)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Summary)
+        {
+            <tr>
+                <td class="product-name">
+                    <img src="@Url.Content(item.ImageSrc)" class="zoom" alt="Image" />
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="product-price">
+                    @String.Format("{0:c}", item.Price)
+                </td>
+            </tr>
+        }
+        <tr>
+            <td class="product-name">Overall Total:</td>
+            <td class="product-price">
+                @if (Model != null && Model.Summary.LastOrDefault() != null)
+                {
+                    @String.Format("{0:c}", Model.Summary.LastOrDefault().TotalPrice)
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>

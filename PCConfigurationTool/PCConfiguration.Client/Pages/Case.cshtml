@@ -1,0 +1,131 @@
+﻿@page
+@model PCConfiguration.Client.CaseModel
+@{
+    ViewData["Title"] = "Case";
+}
+
+@Html.AntiForgeryToken()
+
+
+@section Scripts {
+    <script type="text/javascript">
+        var url = '/Case';
+        $(".btnAdd").click(function () {
+            var row = $(this).closest('tr');
+            var quantity = parseInt(row.find('#item_Quantity').val(), 10);
+            var imageSrc = row.find('.zoom').attr('src');
+            if (quantity > 0) {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: { id: $(this).data('id'), quantity: quantity, imageSrc },
+                    headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                    success: function (result) {
+                        $(".toast-body").html('<img src="' + result.imageSrc + '" class="zoom" height="32px" width="32px" alt="Image" /> ' + result.name + ' added.');
+                        $('.toast').toast('show');
+                    }
+                });
+            }
+        });
+    </script>
+}
+
+<div class="title">
+    <h1>Choose a Case</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cases.FirstOrDefault().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cases.FirstOrDefault().Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cases.FirstOrDefault().PowerSupply)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cases.FirstOrDefault().Window)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cases.FirstOrDefault().ExternalBays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cases.FirstOrDefault().InternalBays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cases.FirstOrDefault().Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cases.FirstOrDefault().Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cases.FirstOrDefault().Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a class="btnNext" href="@Url.Page("./cpu")">Next</a>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model.Cases)
+        {
+            <tr>
+                <td class="product-name">
+                    <img src="@Url.Content(item.ImageSrc)" class="zoom" alt="Image" />
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PowerSupply)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Window)
+                    <label class="css-label" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExternalBays)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InternalBays)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type.Name)
+                </td>
+                <td>
+                    <div class="number-input">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                        @Html.EditorFor(modelItem => item.Quantity, new { htmlAttributes = new { @class = "quantity", @Value = "1" } })
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                    </div>
+                    @Html.ValidationMessageFor(modelItem => item.Quantity)
+                </td>
+                <td class="product-price">
+                    @String.Format("{0:c}", item.Price)
+                </td>
+                <td>
+                    <button type="button" class="btnAdd" data-id="@item.Id">Add</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

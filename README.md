@@ -5,5 +5,5 @@
 
 ## Running the project
 1. Start the project by hitting F5.
-2. Once the web app is loaded navigate to ~/api/Seed in order to seed the data to the DB.
+2. Once the web app is loaded navigate to ~/Seed in order to seed the data to the DB.
 3. You could then start using the application.

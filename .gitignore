@@ -10,3 +10,5 @@
 *.user
 /PCConfigurationTool/PCConfiguration.Tests/bin/Debug/netcoreapp3.1
 /PCConfigurationTool/PCConfiguration.Tests/obj
+/PCConfigurationTool/PCConfiguration.Client/bin/Debug/netcoreapp3.1
+/PCConfigurationTool/PCConfiguration.Client/obj

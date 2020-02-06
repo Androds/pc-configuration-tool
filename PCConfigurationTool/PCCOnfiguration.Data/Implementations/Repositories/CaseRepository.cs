@@ -34,7 +34,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (_context != null)
             {
-                return this._context.Cases.Include(c => c.Type).ToList();
+                return this._context.Cases.Include(c => c.Type).AsNoTracking().ToList();
             }
 
             return new List<Case>();
@@ -45,7 +45,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (_context != null)
             {
-                return await this._context.Cases.Include(c => c.Type).ToListAsync();
+                return await this._context.Cases.Include(c => c.Type).AsNoTracking().ToListAsync();
             }
 
             return await Task.FromResult<IEnumerable<Case>>(null);
@@ -56,7 +56,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (id > 0 && this._context != null)
             {
-                return await this._context.Cases.Where(c => c.Id == id).FirstOrDefaultAsync();
+                return await this._context.Cases.Where(c => c.Id == id).AsNoTracking().FirstOrDefaultAsync();
             }
 
             return await Task.FromResult<Case>(null);

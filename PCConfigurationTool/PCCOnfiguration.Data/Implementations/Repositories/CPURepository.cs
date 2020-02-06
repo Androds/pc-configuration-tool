@@ -35,7 +35,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if(this._context != null)
             {
-                return this._context.CPUs.ToList();
+                return this._context.CPUs.AsNoTracking().ToList();
             }
 
             return new List<CPU>();
@@ -46,7 +46,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (this._context != null)
             {
-                return await this._context.CPUs.ToListAsync();
+                return await this._context.CPUs.AsNoTracking().ToListAsync();
             }
 
             return await Task.FromResult<IEnumerable<CPU>>(null);
@@ -57,7 +57,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (this._context != null && id > 0)
             {
-                return await this._context.CPUs.Where(c => c.Id == id).FirstOrDefaultAsync();
+                return await this._context.CPUs.Where(c => c.Id == id).AsNoTracking().FirstOrDefaultAsync();
             }
 
             return await Task.FromResult<CPU>(null);

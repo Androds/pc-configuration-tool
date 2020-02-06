@@ -36,7 +36,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (this._context != null)
             {
-                return this._context.Memories.Include(m => m.Type).Include(m => m.CASLatency).ToList();
+                return this._context.Memories.Include(m => m.Type).Include(m => m.CASLatency).AsNoTracking().ToList();
             }
             return new List<Memory>();
         }
@@ -46,7 +46,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (this._context != null)
             {
-                return await this._context.Memories.Include(m => m.Type).Include(m => m.CASLatency).ToListAsync();
+                return await this._context.Memories.Include(m => m.Type).Include(m => m.CASLatency).AsNoTracking().ToListAsync();
             }
 
             return await Task.FromResult<IEnumerable<Memory>>(null);
@@ -57,7 +57,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (this._context != null && id > 0)
             {
-                return await this._context.Memories.Where(c => c.Id == id).FirstOrDefaultAsync();
+                return await this._context.Memories.Where(c => c.Id == id).AsNoTracking().FirstOrDefaultAsync();
             }
 
             return await Task.FromResult<Memory>(null);

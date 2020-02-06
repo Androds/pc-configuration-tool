@@ -33,7 +33,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if(this._context != null)
             {
-                return this._context.VideoCards.Include(vc => vc.Interface).ToList();
+                return this._context.VideoCards.Include(vc => vc.Interface).AsNoTracking().ToList();
             }
 
             return new List<VideoCard>();
@@ -44,7 +44,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if(this._context != null)
             {
-                return await this._context.VideoCards.Include(vc => vc.Interface).ToListAsync();
+                return await this._context.VideoCards.Include(vc => vc.Interface).AsNoTracking().ToListAsync();
             }
 
             return await Task.FromResult<IEnumerable<VideoCard>>(null);
@@ -55,7 +55,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if(id > 0 && this._context != null)
             {
-                return await this._context.VideoCards.Where(c => c.Id == id).FirstOrDefaultAsync();
+                return await this._context.VideoCards.Where(c => c.Id == id).AsNoTracking().FirstOrDefaultAsync();
             }
 
             return await Task.FromResult<VideoCard>(null);

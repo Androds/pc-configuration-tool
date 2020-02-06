@@ -35,7 +35,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if (this._context != null)
             {
-                return this._context.Storages.Include(s => s.FormFactor).Include(s => s.Type).Include(s => s.Interface).ToList();
+                return this._context.Storages.Include(s => s.FormFactor).Include(s => s.Type).Include(s => s.Interface).AsNoTracking().ToList();
             }
 
             return new List<Storage>();
@@ -46,7 +46,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if(this._context != null)
             {
-                return await this._context.Storages.Include(s => s.FormFactor).Include(s => s.Type).Include(s => s.Interface).ToListAsync();
+                return await this._context.Storages.Include(s => s.FormFactor).Include(s => s.Type).Include(s => s.Interface).AsNoTracking().ToListAsync();
             }
 
             return await Task.FromResult<IEnumerable<Storage>>(null);
@@ -57,7 +57,7 @@ namespace PCConfiguration.Data.Implementations.Repositories
         {
             if(id > 0 && this._context != null)
             {
-                return await this._context.Storages.Where(c => c.Id == id).FirstOrDefaultAsync();
+                return await this._context.Storages.Where(c => c.Id == id).AsNoTracking().FirstOrDefaultAsync();
             }
 
             return await Task.FromResult<Storage>(null);
